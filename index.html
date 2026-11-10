@@ -157,7 +157,7 @@ textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-r
 <div class="card"><h3 id="sT"></h3><div id="sr"></div></div>
 <div class="card"><h3 id="cT"></h3><div class="bar" id="cmp"></div><div class="lg" id="cl" style="flex-wrap:wrap"></div></div>
 <div class="card"><h3 id="mT"></h3><div id="ch2"></div><div class="lg"><span><i style="background:var(--ac)"></i>Según recibo</span><span><i style="background:var(--ac);opacity:.4"></i>Estimado</span></div></div>
-<div class="card"><h3 id="pT"></h3><button id="rcb" class="p" style="width:100%;margin-bottom:8px">📎 Cargar recibo desde archivo</button><input id="rcf" type="file" accept="image/*" style="display:none"><p class="note">Elegí una foto o captura del recibo: se leen básico, antigüedad, chofer, presentismo, horas extra y líquido. Revisalos antes de guardar.</p>
+<div class="card"><h3 id="pT"></h3><button id="rcb" class="p" style="width:100%;margin-bottom:8px">📎 Cargar recibo desde archivo</button><input id="rcf" type="file" accept="image/*,application/pdf" style="display:none"><p class="note">Elegí una foto o captura del recibo: se leen básico, antigüedad, chofer, presentismo, horas extra y líquido. Revisalos antes de guardar.</p>
 <div class="two"><div><label for="p1">Hs al 50%</label><input id="p1" type="number" min="0" step="0.5" inputmode="decimal"></div><div><label for="p2">Importe al 50% ($)</label><input id="p2" type="number" min="0" inputmode="decimal"></div></div>
 <div class="two"><div><label for="p3">Hs al 100%</label><input id="p3" type="number" min="0" step="0.5" inputmode="decimal"></div><div><label for="p4">Importe al 100% ($)</label><input id="p4" type="number" min="0" inputmode="decimal"></div></div>
 <label for="p5">Líquido a pagar ($)</label><input id="p5" type="number" min="0" inputmode="decimal">
@@ -392,14 +392,23 @@ async function fbBoot(){
 ['nov','eve','com'].forEach(mkBoard);
 $('rnv').onclick=showNv;
 $('rcb').onclick=()=>$('rcf').click();
+const WORKER='https://lector-recibos.cruzmassenzio.workers.dev/';
+function recibo64(f){return new Promise((ok,ko)=>{
+ if(f.type==='application/pdf'){const rd=new FileReader();rd.onload=()=>ok({mimeType:'application/pdf',data:String(rd.result).split(',')[1]});rd.onerror=ko;rd.readAsDataURL(f);return}
+ const url=URL.createObjectURL(f),im=new Image();
+ im.onload=()=>{const z=Math.min(1,1800/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*z);c.height=Math.round(im.height*z);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);ok({mimeType:'image/jpeg',data:c.toDataURL('image/jpeg',0.85).split(',')[1]})};
+ im.onerror=()=>{URL.revokeObjectURL(url);ko(new Error('imagen'))};im.src=url})}
 $('rcf').onchange=async()=>{const f=$('rcf').files[0];$('rcf').value='';if(!f)return;
- try{if(!window.claude){st('Leer recibos solo funciona dentro de Claude. Cargá los datos a mano.');return}const sm=await window.claude.use('sample');if(!sm){st('Esta función necesita el permiso de Claude');return}st('Leyendo el recibo…');
-  const r=await sm.json('Imagen de un recibo de sueldo argentino. Respondé SOLO un objeto JSON con números en pesos, sin símbolos ni separadores de miles: {"basico","antiguedad","chofer","presentismo","otros_plus","h50","e50","h100","e100","liquido","divisor","mes","anio"}. h50 y h100 son las horas extra al 50% y al 100%; e50 y e100 sus importes. otros_plus suma los demás adicionales remunerativos que no sean básico, antigüedad, chofer ni presentismo. Usá null si un dato no figura.',{images:[f]});
+ try{st('Leyendo el recibo…');
+  const body=await recibo64(f);
+  const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const r=await res.json();
+  if(!res.ok||r.error)throw new Error(r.error||'error');
   const n=x=>{const v=parseFloat(x);return isFinite(v)?v:0};
   if(r.mes>=1&&r.mes<=12&&r.anio>2000){M=r.mes-1;Y=r.anio}
   CFG.base=n(r.basico)||CFG.base;CFG.pres=n(r.presentismo);CFG.plus=n(r.antiguedad)+n(r.chofer)+n(r.otros_plus);if(n(r.divisor))CFG.div=n(r.divisor);
   render();fill();[['p1','h50'],['p2','e50'],['p3','h100'],['p4','e100'],['p5','liquido']].forEach(([i,k])=>{$(i).value=r[k]!=null?r[k]:''});save();st('Revisá los datos cargados y tocá Guardar recibo')
- }catch(e){st('No se pudo leer el recibo. Probá con una foto o captura más clara.')}};
+ }catch(e){st('No se pudo leer el recibo. Probá con una foto más clara o con el PDF.')}};
 $('nvok').onclick=()=>{PR.seen=VER;$('nvd').classList.remove('on');save()};
 $('dr').addEventListener('click',e=>{if(e.target.id==='dr')$('dr').classList.remove('on');const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
 $('pn').addEventListener('input',()=>{PR.name=$('pn').value;renderHi();clearTimeout(window._p);window._p=setTimeout(save,700)});
