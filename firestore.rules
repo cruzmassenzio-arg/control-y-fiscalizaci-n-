@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Administradores: solo se cargan a mano desde la consola de Firebase.
+    match /admins/{id} {
+      allow read: if signedIn() && request.auth.uid == id;
+      allow write: if false;
+    }
+
+    // Novedades: las publica solo el administrador.
+    match /nov/{id} {
+      allow read: if signedIn();
+      allow create: if isAdmin() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // Eventos: los publica el administrador; cada persona confirma solo su propia asistencia.
+    match /eve/{id} {
+      allow read: if signedIn();
+      allow create: if isAdmin() && request.resource.data.uid == request.auth.uid;
+      allow delete: if isAdmin();
+      allow update: if isAdmin() || (signedIn()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['go'])
+        && request.resource.data.get('go', {}).diff(resource.data.get('go', {})).affectedKeys().hasOnly([request.auth.uid]));
+    }
+
+    // Comentarios: cualquiera con sesión publica; borra el autor o el administrador.
+    match /com/{id} {
+      allow read: if signedIn();
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+      allow update: if false;
+    }
+
+    // Nocturnidades: todos ven la lista; cada persona escribe solo la suya.
+    match /noct/{uid} {
+      allow read: if signedIn();
+      allow write: if signedIn() && request.auth.uid == uid;
+    }
+  }
+}
