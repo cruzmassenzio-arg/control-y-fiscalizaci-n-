@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B7A9B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Horas extra">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>Registro de horas extra</title>
 <style>
 :root{--bg:#f6f5f1;--card:#fff;--tx:#1d1d1b;--mu:#6b6a64;--bd:#e2e0d8;--ac:#1f5fbf;--ac2:#e8f0fc;--no:#6a3fb0;--no2:#efe8fa;--rd:#b3261e;
@@ -441,6 +448,11 @@ render();
  }catch(e){doc=null}
  if(!doc){try{const x=JSON.parse(localStorage.getItem('hx')||'{}');E=x.E||{};CFG=x.C||{};PAY=x.P||{};PR=x.R||{}}catch(e){}if(PR.nsel)NC.local={name:nm(),sel:PR.nsel};st('Guardado solo en este dispositivo')}
  ready=true;fill();applyTheme();fillPer();go('home',true);render();subAll();drawN();if(PR.seen!==VER)showNv();
+ if(!window.claude){
+  document.querySelectorAll('[data-go="eve"],[data-go="com"],[data-go="nov"]').forEach(b=>{b.style.display='none'});
+  const r=$('rcb');if(r)r.style.display='none';
+  if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
+ }
 })();
 </script>
 </body>
