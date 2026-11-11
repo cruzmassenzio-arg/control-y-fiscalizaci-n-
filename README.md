@@ -13,7 +13,7 @@
 ​Muchas gracias por probar mi aplicación y por darle una oportunidad. Espero que te sea de gran utilidad.
 
 ​¡Un saludo y gracias por el apoyo!
-                                          -cruz massenzio-
+                                                                 -cruz massenzio-
 
                                           
 
