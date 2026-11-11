@@ -117,6 +117,64 @@ textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-r
 .nc.on{background:var(--no2);border-color:var(--no);color:var(--no)}
 .ev{display:flex;gap:10px;align-items:center}.ev img{width:64px;height:64px;object-fit:cover;border-radius:8px}.ev small{display:block;color:var(--mu)}
 .bd{padding:10px 12px;border-bottom:1px solid var(--bd);font-size:14px}.bd:last-child{border:0}.bd small{color:var(--mu)}
+
+/* ===== Paletas nuevas ===== */
+:root[data-pal="c"][data-theme="light"]{--bg:#F0F5F1;--card:#FFFFFF;--tx:#17301F;--mu:#5B7262;--bd:#D6E3D9;--ac:#1F7A4D;--ac2:#DDF1E5;--no:#B7791F;--no2:#FBEFD5;--rd:#b3261e;color-scheme:light}
+:root[data-pal="c"][data-theme="dark"]{--bg:#0E1A13;--card:#15261C;--tx:#E4F1E8;--mu:#8EA796;--bd:#244131;--ac:#4FCB8A;--ac2:#143A26;--no:#E8B04A;--no2:#35290F;--rd:#f2877f;color-scheme:dark}
+:root[data-pal="d"][data-theme="light"]{--bg:#FBF3EE;--card:#FFFFFF;--tx:#3A1F17;--mu:#8A6459;--bd:#EFDCD2;--ac:#C2410C;--ac2:#FDE6D8;--no:#BE185D;--no2:#FCE4EE;--rd:#b3261e;color-scheme:light}
+:root[data-pal="d"][data-theme="dark"]{--bg:#1D120E;--card:#2A1A14;--tx:#F8E9E1;--mu:#C09A8B;--bd:#4A2D22;--ac:#FF8A4C;--ac2:#40210F;--no:#F472B6;--no2:#3F1530;--rd:#f2877f;color-scheme:dark}
+:root[data-pal="e"][data-theme="light"]{--bg:#F5F1FA;--card:#FFFFFF;--tx:#26163D;--mu:#74608F;--bd:#E3D9F0;--ac:#7C3AED;--ac2:#EBE1FD;--no:#0F9D8A;--no2:#D9F5F0;--rd:#b3261e;color-scheme:light}
+:root[data-pal="e"][data-theme="dark"]{--bg:#150E21;--card:#1F1530;--tx:#EEE8FA;--mu:#A796C7;--bd:#35264F;--ac:#A78BFA;--ac2:#2A1B4A;--no:#34D3BC;--no2:#0F3A35;--rd:#f2877f;color-scheme:dark}
+:root[data-pal="f"][data-theme="light"]{--bg:#F2F2F0;--card:#FFFFFF;--tx:#1F2023;--mu:#6B6D72;--bd:#DEDEDB;--ac:#2F3A4A;--ac2:#E4E7EC;--no:#D97706;--no2:#FDEFD6;--rd:#b3261e;color-scheme:light}
+:root[data-pal="f"][data-theme="dark"]{--bg:#121314;--card:#1C1D1F;--tx:#ECEDEE;--mu:#9A9DA3;--bd:#2F3135;--ac:#9FB3CC;--ac2:#222B38;--no:#F5A524;--no2:#3A2A0B;--rd:#f2877f;color-scheme:dark}
+.psw{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.sw{width:40px;height:40px;border-radius:50%;padding:0;border:2px solid var(--bd)}
+.sw.on{outline:3px solid var(--tx);outline-offset:2px}
+/* ===== Animaciones ===== */
+body,.card,.list,.day,select,input,textarea{transition:background-color .3s,border-color .3s,color .3s}
+button{transition:transform .12s ease,background-color .3s,border-color .3s,color .3s,opacity .2s}
+button:active{transform:scale(.96)}
+.day:active{transform:scale(.93)}
+@keyframes aR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes aL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes aU{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(8px)}to{opacity:1;transform:none}}
+@keyframes gx{from{transform:scaleX(0)}to{transform:none}}
+@keyframes ry{from{transform:scaleY(0)}to{transform:none}}
+@keyframes sheet{from{transform:translateY(44px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes drw{from{transform:translateX(-100%)}to{transform:none}}
+.v.aR{animation:aR .28s ease-out backwards}
+.v.aL{animation:aL .28s ease-out backwards}
+.v.aU{animation:aU .25s ease-out backwards}
+.aR>.card,.aL>.card,.aU>.card{animation:aU .38s ease-out backwards}
+.v>.card:nth-child(2){animation-delay:.05s}.v>.card:nth-child(3){animation-delay:.1s}.v>.card:nth-child(4){animation-delay:.15s}.v>.card:nth-child(5){animation-delay:.2s}.v>.card:nth-child(n+6){animation-delay:.25s}
+#v-home.on .hg button{animation:pop .42s cubic-bezier(.2,.8,.2,1) backwards}
+#v-home.on .hg button:nth-child(2){animation-delay:.04s}#v-home.on .hg button:nth-child(3){animation-delay:.08s}#v-home.on .hg button:nth-child(4){animation-delay:.12s}#v-home.on .hg button:nth-child(5){animation-delay:.16s}#v-home.on .hg button:nth-child(6){animation-delay:.2s}#v-home.on .hg button:nth-child(7){animation-delay:.24s}#v-home.on .hg button:nth-child(n+8){animation-delay:.28s}
+.aR .bar i,.aL .bar i,.aU .bar i{transform-origin:left;animation:gx .7s cubic-bezier(.2,.8,.2,1) .15s backwards}
+.aR svg rect.c50,.aL svg rect.c50,.aU svg rect.c50,.aR svg rect.c100,.aL svg rect.c100,.aU svg rect.c100{transform-box:fill-box;transform-origin:bottom;animation:ry .6s cubic-bezier(.2,.8,.2,1) .1s backwards}
+#sh.on,#nvd.on,#nsd.on,#dr.on{animation:fade .2s ease-out backwards}
+#sh.on .box,#nvd.on .box,#nsd.on .box{animation:sheet .28s cubic-bezier(.2,.8,.2,1) backwards}
+#dr.on .pnl{animation:drw .26s cubic-bezier(.2,.8,.2,1) backwards}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:90%;text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+
+/* ===== Descuentos y deudas ===== */
+.fr{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.fr input{width:22px;height:22px;padding:0;flex:none;accent-color:var(--ac)}
+.fr .nm{flex:1;min-width:0;text-align:left;border:0;background:transparent;padding:4px 2px;display:block}
+.fr .nm small{display:block;color:var(--mu);font-size:12px}
+.fr .nm small.neg{color:var(--rd)}
+.fr .am{white-space:nowrap;font-size:14px}
+.mv{display:flex;flex-direction:column;gap:2px}
+.mv button{padding:2px 9px;font-size:11px;line-height:1.3;border-radius:6px}
+.mv button:disabled{opacity:.3}
+.neg{color:var(--rd)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips button{padding:6px 11px;font-size:13px;border-radius:16px}
+#fsd{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;justify-content:center;z-index:40}#fsd.on{display:flex;animation:fade .2s ease-out backwards}
+#fsd.on .box{animation:sheet .28s cubic-bezier(.2,.8,.2,1) backwards}
 </style>
 </head>
 <body>
@@ -155,6 +213,7 @@ textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-r
 <div class="two"><div><label for="cd">Divisor horario</label><input id="cd" type="number" min="1" inputmode="decimal"></div><div><label for="cx">Descuentos sobre el básico (%)</label><input id="cx" type="number" min="0" max="100" inputmode="decimal"></div></div>
 <p class="note">Tomado de tu recibo de octubre 2026. El valor hora es el básico dividido el divisor. IOMA e IPS se descuentan solo sobre el básico, no sobre las extras ni el presentismo.</p></div>
 <div class="card"><h3 id="sT"></h3><div id="sr"></div></div>
+<div class="card"><h3>Descuentos y deudas</h3><label class="ck"><input type="checkbox" id="gk"> Mostrar descuentos</label><div id="fr"></div></div>
 <div class="card"><h3 id="cT"></h3><div class="bar" id="cmp"></div><div class="lg" id="cl" style="flex-wrap:wrap"></div></div>
 <div class="card"><h3 id="mT"></h3><div id="ch2"></div><div class="lg"><span><i style="background:var(--ac)"></i>Según recibo</span><span><i style="background:var(--ac);opacity:.4"></i>Estimado</span></div></div>
 <div class="card"><h3 id="pT"></h3><button id="rcb" class="p" style="width:100%;margin-bottom:8px">📎 Cargar recibo desde archivo</button><p class="note" id="rcs" style="font-weight:600"></p><input id="rcf" type="file" accept="image/*" style="display:none"><p class="note">Elegí una foto o captura del recibo: se leen básico, antigüedad, chofer, presentismo, horas extra y líquido. Revisalos antes de guardar.</p>
@@ -173,7 +232,7 @@ textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-r
 <div class="card" style="text-align:center"><img id="esc2" alt="Escudo de General Belgrano" style="height:96px;border-radius:12px"><div class="av" style="width:72px;height:72px;margin:10px auto 0;font-size:28px"></div><button id="ph" style="margin-top:10px">Cambiar foto</button><input id="pf" type="file" accept="image/*" style="display:none"></div>
 <div class="card"><label for="pn">Nombre</label><input id="pn" type="text" maxlength="40" placeholder="Tu nombre">
 <label for="pth">Tema</label><select id="pth"><option value="light">Claro</option><option value="dark">Oscuro</option><option value="auto">Automático</option></select>
-<label for="ppl">Paleta</label><select id="ppl"><option value="a">A · Belgrano</option><option value="b">B · Cibernética</option></select></div>
+<label for="ppl">Paleta</label><select id="ppl"><option value="a">A · Belgrano</option><option value="b">B · Cibernética</option><option value="c">C · Bosque</option><option value="d">D · Atardecer</option><option value="e">E · Uva</option><option value="f">F · Grafito</option></select><div class="psw" id="psw"></div></div>
 <div class="card" id="acc"><h3>Cuenta (eventos, novedades y nocturnidades compartidas)</h3><p class="note" id="accs">Cargando…</p><div id="accf"><label for="am">Correo</label><input id="am" type="email" autocomplete="username" inputmode="email"><label for="ap">Contraseña</label><input id="ap" type="password" autocomplete="current-password"><div class="acts"><button id="ain" class="p">Entrar</button><button id="aup">Crear cuenta</button></div><button id="arst" style="margin-top:8px;width:100%">Olvidé mi contraseña</button></div><button id="aout" style="display:none;width:100%;margin-top:8px">Cerrar sesión</button></div>
 <div class="card"><h3>Moneda del sueldo</h3><label for="pcu">Mostrar importes en</label><select id="pcu"><option value="ars">Pesos</option><option value="usd">Dólares</option></select>
 <label for="pfx">Cotización ($ por dólar)</label><input id="pfx" type="number" min="0" inputmode="decimal"><p class="note">Los datos del recibo se cargan siempre en pesos. La cotización la cargás vos a mano.</p></div>
@@ -196,6 +255,8 @@ textarea{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-r
 <label for="nt">Motivo</label><input id="nt" type="text" maxlength="120">
 <div class="acts"><button id="cn">Cancelar</button><button id="rm" class="d">Quitar</button><button id="sv" class="p">Guardar</button></div>
 </div></div>
+<div id="fsd"><div class="box"><h2 id="fht">Nueva carpeta</h2><div class="chips" id="fch"><button type="button" data-n="Luz">Luz</button><button type="button" data-n="Agua">Agua</button><button type="button" data-n="Gas">Gas</button><button type="button" data-n="Internet">Internet</button><button type="button" data-n="Alquiler">Alquiler</button><button type="button" data-n="Tarjeta">Tarjeta</button><button type="button" data-n="Préstamo">Préstamo</button><button type="button" data-n="Pago de deuda">Deuda</button></div><label for="fn">Nombre</label><input id="fn" maxlength="40" placeholder="Ej: Luz, Agua, Pago de deuda"><label for="fm">Monto mensual ($)</label><input id="fm" type="number" min="0" inputmode="decimal"><div class="acts"><button id="fdel" class="d">Borrar</button><button id="fcan">Cancelar</button><button id="fok" class="p">Guardar</button></div></div></div>
+<div id="toast"></div>
 <script>
 const MN=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const DN=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
@@ -301,13 +362,17 @@ function renderSue(){
  const W=320,H=150,t=16,bt=20,bw=(W-8)/12;let svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Líquido por mes">';
  L.forEach((x,m)=>{const xx=4+m*bw+3,w=bw-6;if(x){const hh=x.v/mx*(H-t-bt);svg+='<rect class="c50" style="opacity:'+(x.real?1:.4)+'" x="'+xx+'" y="'+(H-bt-hh)+'" width="'+w+'" height="'+hh+'" rx="2"/><text class="v" x="'+(xx+w/2)+'" y="'+(H-bt-hh-3)+'">'+Math.round(x.v/1000)+'k</text>'}svg+='<text x="'+(xx+w/2)+'" y="'+(H-5)+'">'+'EFMAMJJASOND'[m]+'</text>'});
  $('ch2').innerHTML=svg+'</svg>';$('mT').textContent='Líquido por mes en '+Y+' (miles de $)';
+ renderFold();countUps()
 }
 $('ps').onclick=()=>{const g=i=>parseFloat($(i).value);const lq=g('p5');if(!(lq>0))return;
  PAY[Y+'-'+pad(M+1)]={h50:g('p1')||0,e50:g('p2')||0,h100:g('p3')||0,e100:g('p4')||0,liq:lq,base:parseFloat(CFG.base)||0,pres:parseFloat(CFG.pres)||0,pl:parseFloat(CFG.plus)||0};render();save()};
 $('pq').onclick=()=>{delete PAY[Y+'-'+pad(M+1)];render();save()};
 const VT={home:'Menú',nov:'Novedades',com:'Comentarios',reg:'Registro',sue:'Sueldo',gra:'Gráficos',eve:'Eventos',noc:'Nocturnidades',per:'Configuración'};
-function go(v,bk){if(!bk&&view&&view!==v)HS.push(view);view=v;document.querySelectorAll('.v').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));$('vt').textContent=VT[v];$('nvb').style.display=(v==='reg'||v==='sue'||v==='gra')?'':'none';$('mb').style.visibility=v==='home'?'hidden':'';$('nfab').style.display=v==='noc'?'':'none';window.scrollTo(0,0)}
-function applyTheme(){const t=PR.theme||'light',dk=t==='dark'||(t==='auto'&&window.matchMedia('(prefers-color-scheme: dark)').matches),r=document.documentElement;r.dataset.pal=PR.pal||'a';r.dataset.theme=dk?'dark':'light'}
+function go(v,bk,dir){const prev=view;if(!bk&&view&&view!==v)HS.push(view);view=v;document.querySelectorAll('.v').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));$('vt').textContent=VT[v];$('nvb').style.display=(v==='reg'||v==='sue'||v==='gra')?'':'none';$('mb').style.visibility=v==='home'?'hidden':'';$('nfab').style.display=v==='noc'?'':'none';window.scrollTo(0,0);
+ const el=$('v-'+v);if(el){const a=dir||((prev&&prev!==v&&SW.indexOf(prev)>=0&&SW.indexOf(v)>=0)?(SW.indexOf(v)>SW.indexOf(prev)?'aR':'aL'):'aU');el.classList.remove('aR','aL','aU');void el.offsetWidth;el.classList.add(a);clearTimeout(el._at);el._at=setTimeout(()=>el.classList.remove('aR','aL','aU'),900)}
+ if(v==='sue'){CU={};countUps()}
+ ensureTrap()}
+function applyTheme(){const t=PR.theme||'light',dk=t==='dark'||(t==='auto'&&window.matchMedia('(prefers-color-scheme: dark)').matches),r=document.documentElement;r.dataset.pal=PR.pal||'a';r.dataset.theme=dk?'dark':'light';try{const m=document.querySelector('meta[name=theme-color]'),c=getComputedStyle(r).getPropertyValue('--ac').trim();if(m&&c)m.content=c;drawSw()}catch(e){}}
 function renderHi(){const n=(PR.name||'').trim();let ya=0;for(let m=0;m<12;m++)ya+=monthStats(Y,m).tot;
  $('hi').textContent=n?'Hola, '+n:'Hola';
  $('hi2').textContent=nf(monthStats(Y,M).tot)+' hs extra en '+MN[M]+' · '+nf(ya)+' hs en '+Y;
@@ -317,7 +382,7 @@ function fillPer(){fillCfg();$('pn').value=PR.name||'';$('pth').value=PR.theme||
 $('esc2').src=$('esc1').src;
 $('mb').onclick=()=>{const t=Date.now();if(t-lastTap<350){lastTap=0;HS=[];go('home',true);return}lastTap=t;setTimeout(()=>{if(lastTap!==t)return;lastTap=0;if(view!=='home')go(HS.pop()||'home',true)},360)};
 $('v-home').addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
-const VER='2026-11-10',NEWS=[['Cuenta y eventos compartidos','En Perfil > Cuenta entrás con tu correo. Así ves los eventos y novedades que publica el jefe, confirmás tu asistencia y compartís tus nocturnidades con el equipo.'],['Menú principal','Entrás al menú con todas las funciones. La flecha de arriba vuelve a la pantalla anterior; con doble toque volvés al menú.'],['Registro','Tocá un día para cargar horas extra. «Marcar lun–vie» carga los días hábiles. Las nocturnidades y feriados son 10 hs al 100%.'],['Cálculo de sueldo','El valor hora es el básico dividido el divisor. Las horas al 50% se pagan x1,5 y las del 100% x2. Los descuentos se aplican solo sobre el básico. Es una estimación: el recibo real puede traer otros conceptos.'],['Gráficos','Horas por mes, feriados trabajados, reparto 50% y 100% y resumen del año.'],['Configuración','Perfil, tema y paleta, moneda (pesos o dólares con tu cotización) y Escuela 16: los días que marques suman 1 hora al 50%.'],['Tus datos','Se guardan en tu cuenta de Claude, no solo en el teléfono.'],['Recibo desde archivo','En Sueldo, tocá «Cargar recibo desde archivo» y elegí una foto del recibo. Se cargan tu básico, antigüedad, chofer, presentismo, horas extra y líquido, y con eso se calculan tus gráficos. Revisá los datos y guardá.'],['Novedades y comentarios','Publicá texto, fotos o audios cortos para todos, y dejá sugerencias para el desarrollador.'],['Eventos','Cargá un evento con flyer, título y fecha. Al abrirlo podés ver y editar la descripción y marcar quién va.'],['Nocturnidad','Tocá el + para elegir tus días. En viernes, sábado y domingo elegís cuál: noche o tarde. Todos ven quién sale y queda marcado en tu registro.'],['Próximamente','Planilla de fin de mes en imagen o PDF.']];
+const VER='2026-11-10c',NEWS=[['Descuentos y deudas','En Sueldo, activá «Mostrar descuentos» y creá carpetas para tus pagos fijos: luz, agua, deudas… Tocá una carpeta para poner el monto, ordenalas por prioridad con ▲▼ y elegí cuáles descontar. Te mostramos cuánto te queda del sueldo.'],['Deslizá y navegá','Deslizá el dedo hacia los costados para pasar entre Registro, Sueldo, Gráficos, Eventos, Nocturnidades y Configuración. El botón atrás de Android vuelve a la pantalla anterior. En Configuración hay 4 paletas de color nuevas.'],['Cuenta y eventos compartidos','En Perfil > Cuenta entrás con tu correo. Así ves los eventos y novedades que publica el jefe, confirmás tu asistencia y compartís tus nocturnidades con el equipo.'],['Menú principal','Entrás al menú con todas las funciones. La flecha de arriba vuelve a la pantalla anterior; con doble toque volvés al menú.'],['Registro','Tocá un día para cargar horas extra. «Marcar lun–vie» carga los días hábiles. Las nocturnidades y feriados son 10 hs al 100%.'],['Cálculo de sueldo','El valor hora es el básico dividido el divisor. Las horas al 50% se pagan x1,5 y las del 100% x2. Los descuentos se aplican solo sobre el básico. Es una estimación: el recibo real puede traer otros conceptos.'],['Gráficos','Horas por mes, feriados trabajados, reparto 50% y 100% y resumen del año.'],['Configuración','Perfil, tema y paleta, moneda (pesos o dólares con tu cotización) y Escuela 16: los días que marques suman 1 hora al 50%.'],['Tus datos','Se guardan en tu cuenta de Claude, no solo en el teléfono.'],['Recibo desde archivo','En Sueldo, tocá «Cargar recibo desde archivo» y elegí una foto del recibo. Se cargan tu básico, antigüedad, chofer, presentismo, horas extra y líquido, y con eso se calculan tus gráficos. Revisá los datos y guardá.'],['Novedades y comentarios','Publicá texto, fotos o audios cortos para todos, y dejá sugerencias para el desarrollador.'],['Eventos','Cargá un evento con flyer, título y fecha. Al abrirlo podés ver y editar la descripción y marcar quién va.'],['Nocturnidad','Tocá el + para elegir tus días. En viernes, sábado y domingo elegís cuál: noche o tarde. Todos ven quién sale y queda marcado en tu registro.'],['Próximamente','Planilla de fin de mes en imagen o PDF.']];
 function showNv(){$('nvl').innerHTML=NEWS.map(n=>'<p><b>'+n[0]+'</b><br>'+n[1]+'</p>').join('');$('nvd').classList.add('on')}
 const BD={nov:{h:'Novedades',ph:1,au:1,pl:'Escribí una novedad o recordatorio'},eve:{h:'Eventos',ti:1,dt:1,ph:1,go:1,pl:'Descripción del evento'},com:{h:'Comentarios y sugerencias',pl:'Tu comentario o sugerencia para el desarrollador'}};
 const PD={},DT={},OPEN=new Set(),LBL={n:'Nocturnidad',vn:'Viernes nocturnidad',st:'Sábado tarde',sn:'Sábado nocturnidad',dt:'Domingo tarde',dn:'Domingo nocturnidad'};
@@ -343,7 +408,7 @@ function draw(k){const L=$('l-'+k),a=DT[k]||[];if(!a.length){L.innerHTML='<div c
   const g=Object.values(d.go||{}),dt=d.dt?d.dt.split('-').reverse().join('/'):'';
   return'<details class="bd" data-id="'+id+'"'+(OPEN.has(id)?' open':'')+'><summary class="ev">'+(im?im.replace('class="im"','').replace('<img','<img'):'')+'<span><b>'+esc(d.ti||'Evento')+'</b><small>'+esc(dt)+'</small></span></summary>'+hd+(mine?'<textarea id="et-'+id+'" rows="4">'+esc(d.tx||'')+'</textarea><button data-a="sv" data-id="'+id+'">Guardar descripción</button>':'<div>'+esc(d.tx||'')+'</div>')+'<p class="note">Van ('+g.length+'): '+esc(g.join(', ')||'nadie todavía')+'</p><button class="p" data-a="go" data-id="'+id+'">'+((d.go||{})[UID]?'No voy':'Voy')+'</button>'+del+'</details>'}).join('')}
 function subAll(){if(!SDB){['nov','eve','com'].forEach(k=>$('l-'+k).innerHTML='<div class="empty">'+(window.claude?'Entrá con tu cuenta de Claude para ver y publicar.':'Iniciá sesión en Perfil > Cuenta para ver y publicar.')+'</div>');return}
- ['nov','eve','com'].forEach(k=>col(k).orderBy('ts','desc').limit(40).onSnapshot(r=>{DT[k]=r.docs.map(x=>[x.id,x.data()]);draw(k)},()=>{}));
+ ['nov','eve','com'].forEach(k=>col(k).orderBy('ts','desc').limit(40).onSnapshot(r=>{DT[k]=r.docs.map(x=>[x.id,x.data()]);draw(k)},er=>{$('l-'+k).innerHTML='<div class="empty">No se pudo cargar ('+esc((er&&er.code)||'error')+'). Revisá las reglas de Firebase.</div>'}));
  col('noct').onSnapshot(r=>{NC={};r.docs.forEach(x=>NC[x.id]=x.data());drawN()},()=>{})}
 function wk(){const t=new Date();t.setDate(t.getDate()-((t.getDay()+6)%7)+7*WO);return Array.from({length:7},(_,i)=>{const x=new Date(t);x.setDate(t.getDate()+i);return key(x.getFullYear(),x.getMonth(),x.getDate())})}
 function drawN(){const ds=wk(),f=k=>+k.slice(8);$('nwT').textContent='Semana del '+f(ds[0])+' al '+f(ds[6])+' de '+MN[+ds[6].slice(5,7)-1];
@@ -384,10 +449,17 @@ async function fbBoot(){
   $('aout').onclick=()=>Au.signOut(auth);
   Au.onAuthStateChanged(auth,async u=>{
    UNS.forEach(f=>{try{f()}catch(e){}});UNS=[];NC={};Object.keys(DT).forEach(k=>delete DT[k]);
-   if(!u){SDB=null;UID=null;IS_ADM=false;AEM='';if(PR.nsel)NC.local={name:nm(),sel:PR.nsel}}
-   else{AEM=u.email||'';try{IS_ADM=(await F.getDoc(F.doc(db,'admins',u.uid))).exists()}catch(e){IS_ADM=false}UID=u.uid;SDB=mk()}
+   if(!u){SDB=null;UID=null;doc=null;IS_ADM=false;AEM='';if(PR.nsel)NC.local={name:nm(),sel:PR.nsel}}
+   else{AEM=u.email||'';try{IS_ADM=(await F.getDoc(F.doc(db,'admins',u.uid))).exists()}catch(e){IS_ADM=false}UID=u.uid;SDB=mk();
+    try{const R=F.doc(db,'registros',u.uid);
+     doc={get:async()=>{const x=await F.getDoc(R);return{exists:x.exists(),data:()=>x.data()}},set:d=>F.setDoc(R,JSON.parse(JSON.stringify(d)))};
+     const sn=await doc.get();
+     if(sn.exists){const x=sn.data();E=Object.assign({},x.entries||{});CFG=Object.assign({},x.cfg||{});PAY=Object.assign({},x.pay||{});PR=Object.assign({},x.prefs||{});try{localStorage.setItem('hx',JSON.stringify({E:E,C:CFG,P:PAY,R:PR}))}catch(e){}st('Datos cargados desde tu cuenta')}
+     else{await save()}
+     fill();applyTheme();fillPer();render()
+    }catch(e){doc=null;st('No se pudo guardar en tu cuenta: revisá las reglas de Firebase')}}
    renderAcc();hideComp();subAll();drawN()});
- }catch(e){as('Sin conexión: no se pudo cargar el inicio de sesión')}
+ }catch(e){as('No se pudo cargar el inicio de sesión: '+String((e&&(e.code||e.message))||'sin conexión').slice(0,120))}
 }
 ['nov','eve','com'].forEach(mkBoard);
 $('rnv').onclick=showNv;
@@ -406,9 +478,15 @@ $('rcf').onchange=async()=>{const f=$('rcf').files[0];$('rcf').value='';if(!f)re
    r=await sm.json('Imagen de un recibo de sueldo argentino. Respondé SOLO un objeto JSON con números en pesos, sin símbolos ni separadores de miles: {"basico","antiguedad","chofer","presentismo","otros_plus","h50","e50","h100","e100","liquido","divisor","mes","anio"}. h50 y h100 son las horas extra al 50% y al 100%; e50 y e100 sus importes. otros_plus suma los demás adicionales remunerativos que no sean básico, antigüedad, chofer ni presentismo. Usá null si un dato no figura.',{images:[f]});
   }else{
    const body=await recibo64(f);
-   const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-   r=await res.json();
-   if(!res.ok||r.error)throw new Error(r.error||'error');
+   let res,tx;
+   for(let i=0;i<2;i++){
+    res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    tx=await res.text();
+    if(res.ok)break;
+    if(i===0){sv('El servidor está ocupado, reintentando…');await new Promise(z=>setTimeout(z,2500))}
+   }
+   try{r=JSON.parse(tx)}catch(e){throw new Error('El servidor tardó demasiado (código '+res.status+'). Probá de nuevo en un minuto.')}
+   if(!res.ok||r.error)throw new Error(r.error?String(r.error).slice(0,160):'error '+res.status);
   }
   const n=x=>{if(typeof x==='string'){let t=x.replace(/[^0-9,.\-]/g,'');if(t.indexOf(',')>-1)t=t.replace(/\./g,'').replace(',','.');x=t}const v=parseFloat(x);return isFinite(v)?v:0};
   if(r.mes>=1&&r.mes<=12&&r.anio>2000){M=r.mes-1;Y=r.anio}
@@ -485,6 +563,67 @@ $('e16').addEventListener('change',()=>{PR.e16=[...document.querySelectorAll('#e
 $('pcu').onchange=()=>{PR.cur=$('pcu').value;render();save()};
 $('pfx').addEventListener('input',()=>{PR.fx=parseFloat($('pfx').value)||0;render();clearTimeout(window._f);window._f=setTimeout(save,700)});
 function fill(){$('cb').value=CFG.base||'';$('cp').value=CFG.pres||'';$('cpl').value=CFG.plus||'';$('cd').value=CFG.div||'';$('cx').value=CFG.desc||''}
+const SW=['reg','sue','gra','eve','noc','per'],RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let CU={},armed=false,armT=0;
+const PALS=[['a','Belgrano','#0B7A9B','#E5533D'],['b','Cibernética','#4F6BED','#0e98ab'],['c','Bosque','#1F7A4D','#B7791F'],['d','Atardecer','#C2410C','#BE185D'],['e','Uva','#7C3AED','#0F9D8A'],['f','Grafito','#2F3A4A','#D97706']];
+function drawSw(){const b=$('psw');if(!b)return;b.innerHTML=PALS.map(p=>'<button type="button" class="sw'+((PR.pal||'a')===p[0]?' on':'')+'" data-p="'+p[0]+'" aria-label="Paleta '+p[1]+'" title="'+p[1]+'" style="background:linear-gradient(135deg,'+p[2]+' 50%,'+p[3]+' 50%)"></button>').join('')}
+$('psw').addEventListener('click',e=>{const b=e.target.closest('.sw');if(!b)return;PR.pal=b.dataset.p;$('ppl').value=b.dataset.p;applyTheme();save()});
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(window._ts);window._ts=setTimeout(()=>e.classList.remove('on'),2000)}
+function parseM(t){let x=t.replace(/[^0-9,.\-]/g,'');x=(PR.cur==='usd'&&PR.fx>0)?x.replace(/,/g,''):x.replace(/\./g,'').replace(',','.');return parseFloat(x)}
+function countUps(){if(RM||view!=='sue')return;document.querySelectorAll('#sr .kv.t b,#fr .kv.t b').forEach((el,i)=>{const to=parseM(el.textContent);if(!isFinite(to))return;const from=CU[i]||0;CU[i]=to;if(from===to)return;const t0=performance.now(),D=650;
+ const step=n=>{const k=Math.min(1,(n-t0)/D),e=1-Math.pow(1-k,3);el.textContent=ars(k<1?from+(to-from)*e:to);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})}
+function closeOv(){for(const id of ['dr','sh','nsd','nvd','fsd']){const el=$(id);if(el&&el.classList.contains('on')){el.classList.remove('on');return true}}return false}
+function ensureTrap(){if(window.claude||armed)return;try{history.pushState({s:'trap'},'');armed=true}catch(e){}}
+if(!window.claude){
+ try{history.replaceState({s:'base'},'')}catch(e){}
+ addEventListener('pointerdown',ensureTrap,{once:true,capture:true});
+ addEventListener('popstate',()=>{armed=false;
+  if(closeOv()){ensureTrap();return}
+  if(view!=='home'){go(HS.pop()||'home',true);ensureTrap();return}
+  toast('Tocá atrás otra vez para salir');clearTimeout(armT);armT=setTimeout(ensureTrap,2200)})}
+(function(){let sx=0,sy=0,t0=0,ok=false;
+ document.addEventListener('touchstart',e=>{ok=false;if(e.touches.length!==1)return;
+  if(['dr','sh','nsd','nvd','fsd'].some(id=>$(id)&&$(id).classList.contains('on')))return;
+  const t=e.target;if(t.closest('input,textarea,select,audio,.ng'))return;
+  const x=e.touches[0].clientX;if(x<28||x>innerWidth-28)return;
+  for(let n=t;n&&n!==document.body;n=n.parentElement){if(n.scrollWidth>n.clientWidth+4&&/auto|scroll/.test(getComputedStyle(n).overflowX))return}
+  sx=x;sy=e.touches[0].clientY;t0=Date.now();ok=true},{passive:true});
+ document.addEventListener('touchend',e=>{if(!ok)return;ok=false;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+  if(Date.now()-t0>700||Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.6)return;
+  const i=SW.indexOf(view);if(i<0)return;const j=dx<0?i+1:i-1;if(j<0||j>=SW.length)return;
+  go(SW[j],true,dx<0?'aR':'aL')},{passive:true})})();
+
+let FE=null;
+function renderFold(){const box=$('fr');if(!box)return;const on=!!PR.fshow;$('gk').checked=on;
+ if(!on){box.innerHTML='<p class="note">Activalo para anotar tus pagos fijos (luz, agua, deudas…) y ver cuánto te queda del sueldo después de pagarlos.</p>';return}
+ const F=PR.fold||[],l=liq(Y,M),sal=l?l.v:null;let rem=sal,tot=0,h='';
+ if(!F.length)h='<div class="empty">Todavía no tenés carpetas. Creá una para cada gasto o deuda.</div>';
+ F.forEach((f,i)=>{const sel=f.on!==false;let sub='Incluida en el descuento',bad=false;
+  if(sel){tot+=f.m;if(sal!=null){rem-=f.m;if(rem>=0)sub='Después de pagarla te quedan '+ars(rem);else{sub='No alcanza: faltan '+ars(-rem);bad=true}}}else sub='No incluida';
+  h+='<div class="fr"><input type="checkbox" class="fck" data-id="'+f.id+'"'+(sel?' checked':'')+' aria-label="Incluir '+esc(f.n)+'"><button class="nm" data-a="ed" data-id="'+f.id+'"><b>'+esc(f.n)+'</b><small'+(bad?' class="neg"':'')+'>'+sub+'</small></button><b class="am">'+ars(f.m)+'</b><span class="mv"><button data-a="up" data-id="'+f.id+'" aria-label="Subir prioridad"'+(i===0?' disabled':'')+'>▲</button><button data-a="dn" data-id="'+f.id+'" aria-label="Bajar prioridad"'+(i===F.length-1?' disabled':'')+'>▼</button></span></div>'});
+ h+='<button class="p" data-a="add" style="width:100%;margin-top:10px">+ Nueva carpeta</button>';
+ if(F.length){
+  h+='<div style="margin-top:10px">';
+  if(sal!=null)h+='<div class="kv"><span>Sueldo a cobrar'+(l.real?'':' (estimado)')+'</span><b>'+ars(sal)+'</b></div>';
+  h+='<div class="kv"><span>Descuentos seleccionados</span><b>'+ars(tot)+'</b></div>';
+  if(sal!=null)h+='<div class="kv t"><span>Te queda</span><b'+(sal-tot<0?' class="neg"':'')+'>'+ars(sal-tot)+'</b></div>';
+  else h+='<p class="note">Cargá tu recibo o tus horas de este mes para ver cuánto te queda.</p>';
+  h+='</div><p class="note">Ordená las carpetas con ▲▼ de la más importante a la menos: vas a ver hasta cuál te alcanza el sueldo. Tocá el cuadrito para incluirla o no, y tocá el nombre para cambiar el monto.</p>'}
+ box.innerHTML=h}
+function openF(id){FE=id;const f=(PR.fold||[]).find(x=>x.id===id);$('fht').textContent=f?'Editar carpeta':'Nueva carpeta';$('fn').value=f?f.n:'';$('fm').value=f&&f.m?f.m:'';$('fdel').style.display=f?'':'none';$('fch').style.display=f?'none':'';$('fsd').classList.add('on');setTimeout(()=>{try{(f?$('fm'):$('fn')).focus()}catch(e){}},60)}
+$('gk').onchange=()=>{PR.fshow=$('gk').checked;renderFold();save()};
+$('fr').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,id=b.dataset.id;
+ if(a==='add')openF(null);else if(a==='ed')openF(id);
+ else if(a==='up'||a==='dn'){const L=PR.fold||[],i=L.findIndex(x=>x.id===id),j=a==='up'?i-1:i+1;if(i>=0&&j>=0&&j<L.length){[L[i],L[j]]=[L[j],L[i]];renderFold();save()}}});
+$('fr').addEventListener('change',e=>{const c=e.target.closest('.fck');if(!c)return;const f=(PR.fold||[]).find(x=>x.id===c.dataset.id);if(f){f.on=c.checked;renderFold();save()}});
+$('fch').addEventListener('click',e=>{const b=e.target.closest('[data-n]');if(b){$('fn').value=b.dataset.n;$('fm').focus()}});
+$('fcan').onclick=()=>$('fsd').classList.remove('on');
+$('fok').onclick=()=>{const n=$('fn').value.trim(),m=parseFloat($('fm').value);if(!n){$('fn').focus();return}
+ PR.fold=PR.fold||[];const v=isFinite(m)&&m>0?m:0;
+ if(FE){const f=PR.fold.find(x=>x.id===FE);if(f){f.n=n;f.m=v}}else PR.fold.push({id:'f'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),n:n,m:v,on:true});
+ $('fsd').classList.remove('on');render();save()};
+$('fdel').onclick=()=>{PR.fold=(PR.fold||[]).filter(x=>x.id!==FE);$('fsd').classList.remove('on');render();save()};
+
 render();
 (async()=>{
  try{
