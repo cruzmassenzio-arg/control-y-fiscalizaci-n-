@@ -489,7 +489,6 @@ render();
  ready=true;fill();applyTheme();fillPer();go('home',true);render();subAll();drawN();if(PR.seen!==VER)showNv();
  if(!window.claude){
   fbBoot();
-  const r=$('rcb');if(r)r.style.display='none';
   if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
  }else{const a=$('acc');if(a)a.style.display='none'}
 })();
