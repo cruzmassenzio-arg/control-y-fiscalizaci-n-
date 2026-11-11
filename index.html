@@ -410,10 +410,15 @@ $('rcf').onchange=async()=>{const f=$('rcf').files[0];$('rcf').value='';if(!f)re
    r=await res.json();
    if(!res.ok||r.error)throw new Error(r.error||'error');
   }
-  const n=x=>{const v=parseFloat(x);return isFinite(v)?v:0};
+  const n=x=>{if(typeof x==='string'){let t=x.replace(/[^0-9,.\-]/g,'');if(t.indexOf(',')>-1)t=t.replace(/\./g,'').replace(',','.');x=t}const v=parseFloat(x);return isFinite(v)?v:0};
   if(r.mes>=1&&r.mes<=12&&r.anio>2000){M=r.mes-1;Y=r.anio}
-  CFG.base=n(r.basico)||CFG.base;CFG.pres=n(r.presentismo);CFG.plus=n(r.antiguedad)+n(r.chofer)+n(r.otros_plus);if(n(r.divisor))CFG.div=n(r.divisor);
-  render();fill();[['p1','h50'],['p2','e50'],['p3','h100'],['p4','e100'],['p5','liquido']].forEach(([i,k])=>{$(i).value=r[k]!=null?r[k]:''});save();sv('Revisá los datos cargados y tocá Guardar recibo')
+  CFG.base=n(r.basico)||CFG.base;CFG.pres=n(r.presentismo);CFG.plus=n(r.antiguedad)+n(r.chofer)+n(r.otros_plus);
+  const b0=parseFloat(CFG.base)||0;
+  const v50=(n(r.h50)>0&&n(r.e50)>0)?n(r.e50)/(n(r.h50)*1.5):0,v100=(n(r.h100)>0&&n(r.e100)>0)?n(r.e100)/(n(r.h100)*2):0,vv=v50||v100;
+  if(b0>0&&vv>0)CFG.div=Math.round(b0/vv);else if(n(r.divisor))CFG.div=n(r.divisor);
+  const brt=b0+n(r.presentismo)+CFG.plus+n(r.e50)+n(r.e100),lqd=n(r.liquido);
+  if(b0>0&&lqd>0&&brt>lqd)CFG.desc=Math.round((brt-lqd)/b0*10000)/100;
+  render();fill();[['p1','h50'],['p2','e50'],['p3','h100'],['p4','e100'],['p5','liquido']].forEach(([i,k])=>{$(i).value=r[k]!=null?r[k]:''});save();sv('Bruto '+ars(brt)+' · Descuentos '+ars(Math.max(0,brt-lqd))+' · Líquido '+ars(lqd)+'. Revisá que coincida con tu recibo y tocá Guardar recibo')
  }catch(e){sv('No se pudo leer el recibo: '+String(e.message||e).slice(0,160))}};
 $('nvok').onclick=()=>{PR.seen=VER;$('nvd').classList.remove('on');save()};
 $('dr').addEventListener('click',e=>{if(e.target.id==='dr')$('dr').classList.remove('on');const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
