@@ -322,6 +322,75 @@ details>summary{cursor:pointer;color:var(--ac);font-size:13px;margin-top:8px}
 .tus{padding:8px 0;border-bottom:1px solid var(--bd)}.tus p{margin:3px 0 0;font-size:14px;color:var(--mu)}
 .tuh{background:var(--ac2);border:1.5px solid var(--ac);border-radius:12px;padding:12px;margin-bottom:10px;font-size:14px}
 .tuh p{margin:6px 0}.tuh ol{margin:6px 0 6px 18px;padding:0}.tuh li{margin:4px 0}
+
+/* ===== UI 2: centro de mando + bento + barra inferior ===== */
+:root[data-pal="g"][data-theme="light"]{--bg:#EDF2FA;--card:#FFFFFF;--tx:#0E1630;--mu:#5B6785;--bd:#D5DDEE;--ac:#0E7490;--ac2:#DCF2F8;--no:#7C3AED;--no2:#EEE7FD;--rd:#B3261E;--onac:#fff;color-scheme:light}
+:root[data-pal="g"][data-theme="dark"]{--bg:#070B14;--card:#0F1626;--tx:#E8EEFF;--mu:#8A97B6;--bd:#1E2A44;--ac:#3DD6F5;--ac2:#0F2E3A;--no:#A78BFA;--no2:#241C45;--rd:#FF7A88;--onac:#04121A;color-scheme:dark}
+:root[data-theme="dark"]{--onac:#0b0f16}
+:root[data-pal="a"][data-theme="light"],:root[data-pal="b"][data-theme="light"],:root[data-pal="c"][data-theme="light"],:root[data-pal="d"][data-theme="light"],:root[data-pal="e"][data-theme="light"],:root[data-pal="f"][data-theme="light"]{--onac:#fff}
+button.p,.seg button.on,.nwb,.qf{color:var(--onac,#fff)}
+body{background-color:var(--bg);background-image:radial-gradient(760px 380px at 85% -6%,color-mix(in srgb,var(--ac) 18%,transparent),transparent),radial-gradient(620px 320px at -10% 8%,color-mix(in srgb,var(--no) 12%,transparent),transparent);background-repeat:no-repeat;background-size:100% 520px}
+main{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+.card,.sum div{box-shadow:0 12px 30px -22px color-mix(in srgb,var(--ac) 55%,transparent)}
+:root[data-pal="g"] .card{background:color-mix(in srgb,var(--card) 78%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:color-mix(in srgb,var(--ac) 16%,var(--bd))}
+.kv b,.big,.am,.cmv b,.sum strong,.dc-v,.dn-r b,.hrow b{font-variant-numeric:tabular-nums}
+#nfab{bottom:calc(92px + env(safe-area-inset-bottom,0px))!important}
+#toast{bottom:calc(98px + env(safe-area-inset-bottom,0px))}
+.hg{display:none}
+/* barra inferior */
+#bn{position:fixed;left:0;right:0;bottom:0;z-index:12;display:flex;justify-content:center;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+#bn .in{pointer-events:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:100%;max-width:540px;padding:6px;border-radius:24px;background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);border:1px solid color-mix(in srgb,var(--ac) 26%,var(--bd));box-shadow:0 16px 36px -14px rgba(0,0,0,.55),0 0 28px -12px color-mix(in srgb,var(--ac) 70%,transparent)}
+#bn button{position:relative;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 7px;font-size:11px;color:var(--mu);border-radius:18px;transition:color .25s,background-color .25s,transform .12s}
+#bn button svg{transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .3s}
+#bn button.on{color:var(--ac);background:color-mix(in srgb,var(--ac) 14%,transparent)}
+#bn button.on svg{transform:translateY(-1px) scale(1.14);filter:drop-shadow(0 0 7px color-mix(in srgb,var(--ac) 70%,transparent))}
+#bn .bdg{top:2px;right:calc(50% - 22px)}
+.qf{position:fixed;right:16px;bottom:calc(92px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);display:flex;align-items:center;justify-content:center;padding:0;z-index:14;box-shadow:0 10px 26px -6px color-mix(in srgb,var(--ac) 75%,transparent),0 0 0 4px color-mix(in srgb,var(--ac) 18%,transparent);animation:pop .45s cubic-bezier(.2,.8,.2,1) .3s backwards}
+.qf:active{transform:scale(.92)}
+/* bento */
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px;grid-auto-flow:dense;margin-bottom:12px}
+.bt{position:relative;background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--ac) 16%,var(--bd));border-radius:20px;padding:14px;cursor:pointer;overflow:hidden;animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards;box-shadow:0 14px 34px -22px color-mix(in srgb,var(--ac) 65%,transparent);transition:transform .12s,border-color .25s,box-shadow .25s}
+.bento>.bt:nth-child(2){animation-delay:.05s}.bento>.bt:nth-child(3){animation-delay:.1s}.bento>.bt:nth-child(4){animation-delay:.15s}.bento>.bt:nth-child(5){animation-delay:.2s}.bento>.bt:nth-child(n+6){animation-delay:.25s}
+.bt:active{transform:scale(.98)}
+.bt.w{grid-column:1/-1}
+.bt small{display:block;color:var(--mu);font-size:12px}
+.bt b{display:block;font-size:19px;margin:3px 0;font-variant-numeric:tabular-nums}
+.bt.alert{border-color:var(--no);box-shadow:0 0 0 1px var(--no) inset,0 0 28px -8px var(--no)}
+.bt.late b{color:var(--no)}
+.bhero{display:flex;gap:14px;align-items:center;padding:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 18%,var(--card)),color-mix(in srgb,var(--no) 10%,var(--card)));cursor:pointer}
+.bhero .dnsvg{width:148px;flex:none;margin:0}
+.bh-r{flex:1;min-width:0}
+.bh-r .big{font-size:26px;margin:2px 0}
+.bh-kv{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--mu);padding:2px 0}
+.bh-kv b{display:inline;font-size:13px;margin:0;color:var(--tx)}
+.bhm{display:block;margin-top:8px;font-size:12px;color:var(--ac)}
+.bt-ed{position:absolute;bottom:8px;right:8px;display:flex;gap:4px;z-index:3}
+.bt-ed button{padding:3px 9px;font-size:12px;border-radius:10px}
+.bt.edit{outline:2px dashed var(--ac);outline-offset:-5px;padding-bottom:50px}
+.hmedit{width:100%;margin-bottom:10px}
+.gr{width:52px;height:52px;flex:none}
+.gr-t{fill:none;stroke:var(--bd);stroke-width:5}
+.gr-p{fill:none;stroke:var(--ac);stroke-width:5;stroke-linecap:round;transition:stroke-dasharray 1.1s cubic-bezier(.22,.8,.2,1)}
+.gr-x{fill:var(--tx);font-size:11px;font-weight:700;text-anchor:middle}
+.gl-row{display:flex;align-items:center;gap:8px}
+.gl-row>div{min-width:0}
+.bti{display:flex;width:46px;height:46px;border-radius:15px;background:var(--ac2);color:var(--ac);align-items:center;justify-content:center;margin-bottom:10px;font-style:normal}
+.bt .bdg{top:12px;right:12px}
+.hint{font-size:12px;color:var(--mu);margin:2px 2px 12px}
+#hm .bhero .dnsvg{view-transition-name:donut}
+.bt{animation:none}
+.bento.ani>.bt{animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards}
+.bento.ani>.bt:nth-child(2){animation-delay:.06s}.bento.ani>.bt:nth-child(3){animation-delay:.12s}.bento.ani>.bt:nth-child(4){animation-delay:.18s}.bento.ani>.bt:nth-child(5){animation-delay:.24s}.bento.ani>.bt:nth-child(n+6){animation-delay:.3s}
+#v-eq .bento>.bt,#v-mas .bento>.bt{animation:pop .45s cubic-bezier(.2,.8,.2,1) backwards}
+#v-eq .bento>.bt:nth-child(2),#v-mas .bento>.bt:nth-child(2){animation-delay:.05s}#v-eq .bento>.bt:nth-child(3),#v-mas .bento>.bt:nth-child(3){animation-delay:.1s}#v-eq .bento>.bt:nth-child(4),#v-mas .bento>.bt:nth-child(4){animation-delay:.15s}#v-mas .bento>.bt:nth-child(5){animation-delay:.2s}#v-mas .bento>.bt:nth-child(6){animation-delay:.25s}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 transparent}30%{box-shadow:0 0 0 3px var(--ac),0 0 34px color-mix(in srgb,var(--ac) 70%,transparent)}}
+.flash{animation:flash 1.5s ease-out!important}
+.rg{width:118px;height:118px;flex:none}
+.rg-l{flex:1;min-width:0;font-size:13px}
+.rg-l div{display:flex;align-items:center;gap:7px;padding:3px 0}
+.rg-l i{width:10px;height:10px;border-radius:50%;flex:none}
+.rg-l b{display:inline;margin:0 0 0 auto;font-size:12px;white-space:nowrap}
+.rg-l small{margin-bottom:2px}
 </style>
 </head>
 <body>
@@ -387,11 +456,13 @@ details>summary{cursor:pointer;color:var(--ac);font-size:13px;margin-top:8px}
 <section class="v" id="v-noc"><div class="nav"><button id="nwp">‹</button><b id="nwT" style="font-size:15px"></b><button id="nwn">›</button></div><div class="list" id="nl"></div><p class="note">Tocá el + para marcar tus nocturnidades: se avisan a todos y quedan en tu registro.</p></section>
 <section class="v" id="v-nov"></section>
 <section class="v" id="v-com"></section>
+<section class="v" id="v-eq"></section>
+<section class="v" id="v-mas"></section>
 <section class="v" id="v-per">
 <div class="card" style="text-align:center"><img id="esc2" alt="Escudo de General Belgrano" style="height:96px;border-radius:12px"><div class="av" style="width:72px;height:72px;margin:10px auto 0;font-size:28px"></div><button id="ph" style="margin-top:10px">Cambiar foto</button><input id="pf" type="file" accept="image/*" style="display:none"></div>
 <div class="card"><label for="pn">Nombre</label><input id="pn" type="text" maxlength="40" placeholder="Tu nombre">
 <label for="pth">Tema</label><select id="pth"><option value="light">Claro</option><option value="dark">Oscuro</option><option value="auto">Automático</option></select>
-<label for="ppl">Paleta</label><select id="ppl"><option value="a">A · Belgrano</option><option value="b">B · Cibernética</option><option value="c">C · Bosque</option><option value="d">D · Atardecer</option><option value="e">E · Uva</option><option value="f">F · Grafito</option></select><div class="psw" id="psw"></div></div>
+<label for="ppl">Paleta</label><select id="ppl"><option value="a">A · Belgrano</option><option value="b">B · Cibernética</option><option value="c">C · Bosque</option><option value="d">D · Atardecer</option><option value="e">E · Uva</option><option value="f">F · Grafito</option><option value="g">G · Centro de mando</option></select><div class="psw" id="psw"></div></div>
 <div class="card" id="acc"><h3>Cuenta (eventos, novedades y nocturnidades compartidas)</h3><p class="note" id="accs">Cargando…</p><div id="syncBox" style="display:none"><p class="note" id="syncT"></p><div class="row" style="margin-top:8px"><button id="syncNow">Sincronizar ahora</button><button id="diagBtn">Diagnóstico</button><button id="rulesCp" class="p">Copiar reglas</button></div><pre id="diagO"></pre><details><summary>Ver las reglas de Firestore</summary><textarea id="rulesTx" rows="8" readonly></textarea></details></div><div id="accid" style="display:none"><label for="uidv">Tu UID</label><input id="uidv" readonly><div class="acts"><button id="ucp" class="p">Copiar mi UID</button><button id="urc">Verificar de nuevo</button></div><p class="note" id="uidh"></p></div><div id="accf"><label for="am">Correo</label><input id="am" type="email" autocomplete="username" inputmode="email"><label for="ap">Contraseña</label><input id="ap" type="password" autocomplete="current-password"><div class="acts"><button id="ain" class="p">Entrar</button><button id="aup">Crear cuenta</button></div><button id="arst" style="margin-top:8px;width:100%">Olvidé mi contraseña</button></div><button id="aout" style="display:none;width:100%;margin-top:8px">Cerrar sesión</button></div>
 <div class="card"><h3>Moneda del sueldo</h3><label for="pcu">Mostrar importes en</label><select id="pcu"><option value="ars">Pesos</option><option value="usd">Dólares</option></select>
 <label for="pfx">Cotización ($ por dólar)</label><input id="pfx" type="number" min="0" inputmode="decimal"><p class="note">Los datos del recibo se cargan siempre en pesos. La cotización la cargás vos a mano.</p></div>
@@ -417,6 +488,8 @@ details>summary{cursor:pointer;color:var(--ac);font-size:13px;margin-top:8px}
 <div class="acts"><button id="cn">Cancelar</button><button id="rm" class="d">Quitar</button><button id="sv" class="p">Guardar</button></div>
 </div></div>
 <div id="fsd"><div class="box"><h2 id="fht">Nueva carpeta</h2><div class="chips" id="fch"><button type="button" data-n="Luz">Luz</button><button type="button" data-n="Agua">Agua</button><button type="button" data-n="Gas">Gas</button><button type="button" data-n="Internet">Internet</button><button type="button" data-n="Alquiler">Alquiler</button><button type="button" data-n="Tarjeta">Tarjeta</button><button type="button" data-n="Préstamo">Préstamo</button><button type="button" data-n="Pago de deuda">Deuda</button></div><label for="fn">Nombre</label><input id="fn" maxlength="40" placeholder="Ej: Luz, Agua, Pago de deuda"><label for="fm">Monto mensual ($)</label><input id="fm" type="number" min="0" inputmode="decimal"><div class="two"><div><label for="fdd">Vence el día (opcional)</label><input id="fdd" type="number" min="1" max="31" inputmode="numeric"></div><div><label for="fi">Interés mensual % (opcional)</label><input id="fi" type="number" min="0" step="0.1" inputmode="decimal"></div></div><label for="ft">Deuda total pendiente ($, opcional)</label><input id="ft" type="number" min="0" inputmode="decimal"><p class="note">Con la deuda total y la cuota te calculo en cuántos meses terminás de pagar.</p><div class="acts"><button id="fdel" class="d">Borrar</button><button id="fcan">Cancelar</button><button id="fok" class="p">Guardar</button></div></div></div>
+<nav id="bn" aria-label="Navegación principal"><div class="in"></div></nav>
+<button id="qfab" class="qf" aria-label="Cargar las horas de hoy"></button>
 <div id="prt"></div>
 <div id="sq"><div class="sqb"><input id="sqi" type="search" placeholder="Buscar jornadas, recibos, deudas, novedades…" autocomplete="off"><button id="sqx">Cerrar</button></div><div id="sqr"></div></div>
 <div id="lk"><div class="lkw"><h2 id="lkt">Ingresá tu PIN</h2><div class="lkd" id="lkd"></div><p id="lkm"></p><div class="lkp" id="lkp"><button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button id="lkb" aria-label="Huella">☝</button><button data-k="0">0</button><button id="lkx" aria-label="Borrar">⌫</button></div><button id="lkf" class="lkl">Olvidé mi PIN</button><button id="lkc" class="lkl" style="display:none">Cancelar</button></div></div>
@@ -532,14 +605,14 @@ function renderSue(){
 $('ps').onclick=()=>{const g=i=>parseFloat($(i).value);const lq=g('p5');if(!(lq>0))return;
  PAY[Y+'-'+pad(M+1)]={h50:g('p1')||0,e50:g('p2')||0,h100:g('p3')||0,e100:g('p4')||0,liq:lq,base:parseFloat(CFG.base)||0,pres:parseFloat(CFG.pres)||0,pl:parseFloat(CFG.plus)||0};render();save()};
 $('pq').onclick=()=>{delete PAY[Y+'-'+pad(M+1)];render();save()};
-const VT={home:'Menú',nov:'Novedades',com:'Comentarios',reg:'Registro',sue:'Sueldo',gra:'Gráficos',eve:'Eventos',noc:'Nocturnidades',per:'Configuración'};
-function go2(v,bk,dir){const prev=view;if(!bk&&view&&view!==v)HS.push(view);view=v;document.querySelectorAll('.v').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));$('vt').textContent=VT[v];$('nvb').style.display=(v==='reg'||v==='sue'||v==='gra')?'':'none';$('mb').style.visibility=v==='home'?'hidden':'';$('nfab').style.display=v==='noc'?'':'none';window.scrollTo(0,0);
+const VT={eq:'Equipo',mas:'Más',home:'Inicio',nov:'Novedades',com:'Comentarios',reg:'Registro',sue:'Sueldo',gra:'Gráficos',eve:'Eventos',noc:'Nocturnidades',per:'Configuración'};
+function go2(v,bk,dir){const prev=view;if(!bk&&view&&view!==v)HS.push(view);view=v;document.querySelectorAll('.v').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));$('vt').textContent=VT[v];$('nvb').style.display=(v==='reg'||v==='sue'||v==='gra')?'':'none';$('mb').style.visibility=(v==='home'||v==='reg'||v==='sue'||v==='eq'||v==='mas')?'hidden':'';$('nfab').style.display=v==='noc'?'':'none';window.scrollTo(0,0);
  const el=$('v-'+v);if(el&&dir!=='x'){const a=dir||((prev&&prev!==v&&SW.indexOf(prev)>=0&&SW.indexOf(v)>=0)?(SW.indexOf(v)>SW.indexOf(prev)?'aR':'aL'):'aU');el.classList.remove('aR','aL','aU');void el.offsetWidth;el.classList.add(a);clearTimeout(el._at);el._at=setTimeout(()=>el.classList.remove('aR','aL','aU'),900)}
  if(v!=='gra')VTF=false;
  if(v==='sue'||v==='gra'){CU={};countUps();renderDonuts(true)}
  if(window.x2&&x2.onGo)x2.onGo(v);
  ensureTrap()}
-function applyTheme(){const t=PR.theme||'light',dk=t==='dark'||(t==='auto'&&window.matchMedia('(prefers-color-scheme: dark)').matches),r=document.documentElement;r.dataset.pal=PR.pal||'a';r.dataset.theme=dk?'dark':'light';try{const m=document.querySelector('meta[name=theme-color]'),c=getComputedStyle(r).getPropertyValue('--ac').trim();if(m&&c)m.content=c;drawSw()}catch(e){}}
+function applyTheme(){const t=PR.theme||'light',dk=t==='dark'||(t==='auto'&&window.matchMedia('(prefers-color-scheme: dark)').matches),r=document.documentElement;r.dataset.pal=PR.pal||'a';r.dataset.theme=dk?'dark':'light';try{const m=document.querySelector('meta[name=theme-color]'),c=getComputedStyle(r).getPropertyValue('--bg').trim();if(m&&c)m.content=c;drawSw()}catch(e){}}
 function renderHi(){const n=(PR.name||'').trim();let ya=0;for(let m=0;m<12;m++)ya+=monthStats(Y,m).tot;
  $('hi').textContent=n?'Hola, '+n:'Hola';
  $('hi2').textContent=nf(monthStats(Y,M).tot)+' hs extra en '+MN[M]+' · '+nf(ya)+' hs en '+Y;
@@ -549,7 +622,7 @@ function fillPer(){fillCfg();$('pn').value=PR.name||'';$('pth').value=PR.theme||
 $('esc2').src=$('esc1').src;
 $('mb').onclick=()=>{const t=Date.now();if(t-lastTap<350){lastTap=0;HS=[];go('home',true);return}lastTap=t;setTimeout(()=>{if(lastTap!==t)return;lastTap=0;if(view!=='home')go(HS.pop()||'home',true)},360)};
 $('v-home').addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
-const VER='2026-11-11b',NEWS=[['Nube, eventos y guías','Todos pueden publicar eventos y novedades. Arriba hay una nube ☁ que muestra si tus datos se guardan en la nube, y en Configuración › Cuenta un Diagnóstico y un botón para copiar las reglas de Firebase. El botón ? de cada pantalla abre una guía de todas sus funciones, con el paso a paso para calcular el divisor horario de cada recibo.'],['Más funciones','Ahora todos pueden publicar novedades, con reacciones, confirmación de lectura y encuestas. Los eventos tienen comentarios. En Sueldo hay pestañas: Mes, Deudas (con vencimientos y plan para saldar), Metas (meta de sueldo, aguinaldo y vacaciones) e Historial (evolución de recibos y comparar meses). En Registro podés copiar la semana anterior y usar plantillas de turno. Hay buscador, planilla en PDF, respaldo de datos, recordatorio de horas y bloqueo con PIN o huella.'],['Gráficos radiales','En Sueldo hay un círculo con el desglose de tu sueldo: tocalo y se abre en Gráficos con el detalle completo. Tocá cada parte del círculo o de la lista para resaltarla. En Gráficos también hay un círculo con tus horas del mes.'],['Descuentos y deudas','En Sueldo, activá «Mostrar descuentos» y creá carpetas para tus pagos fijos: luz, agua, deudas… Tocá una carpeta para poner el monto, ordenalas por prioridad con ▲▼ y elegí cuáles descontar. Te mostramos cuánto te queda del sueldo.'],['Deslizá y navegá','Deslizá el dedo hacia los costados para pasar entre Registro, Sueldo, Gráficos, Eventos, Nocturnidades y Configuración. El botón atrás de Android vuelve a la pantalla anterior. En Configuración hay 4 paletas de color nuevas.'],['Cuenta y eventos compartidos','En Perfil > Cuenta entrás con tu correo. Así ves los eventos y novedades que publica el jefe, confirmás tu asistencia y compartís tus nocturnidades con el equipo.'],['Menú principal','Entrás al menú con todas las funciones. La flecha de arriba vuelve a la pantalla anterior; con doble toque volvés al menú.'],['Registro','Tocá un día para cargar horas extra. «Marcar lun–vie» carga los días hábiles. Las nocturnidades y feriados son 10 hs al 100%.'],['Cálculo de sueldo','El valor hora es el básico dividido el divisor. Las horas al 50% se pagan x1,5 y las del 100% x2. Los descuentos se aplican solo sobre el básico. Es una estimación: el recibo real puede traer otros conceptos.'],['Gráficos','Horas por mes, feriados trabajados, reparto 50% y 100% y resumen del año.'],['Configuración','Perfil, tema y paleta, moneda (pesos o dólares con tu cotización) y Escuela 16: los días que marques suman 1 hora al 50%.'],['Tus datos','Se guardan en tu cuenta de Claude, no solo en el teléfono.'],['Recibo desde archivo','En Sueldo, tocá «Cargar recibo desde archivo» y elegí una foto del recibo. Se cargan tu básico, antigüedad, chofer, presentismo, horas extra y líquido, y con eso se calculan tus gráficos. Revisá los datos y guardá.'],['Novedades y comentarios','Publicá texto, fotos o audios cortos para todos, y dejá sugerencias para el desarrollador.'],['Eventos','Cargá un evento con flyer, título y fecha. Al abrirlo podés ver y editar la descripción y marcar quién va.'],['Nocturnidad','Tocá el + para elegir tus días. En viernes, sábado y domingo elegís cuál: noche o tarde. Todos ven quién sale y queda marcado en tu registro.'],['Próximamente','Planilla de fin de mes en imagen o PDF.']];
+const VER='2026-11-12b',NEWS=[['Nuevo diseño: centro de mando','Estrenamos el diseño «Centro de mando». Abajo hay una barra con Inicio, Registro, Sueldo, Equipo y Más. El inicio ahora es una grilla de tarjetas que podés ordenar y ocultar con «Personalizar inicio». El botón + carga las horas de hoy. Equipo reúne Eventos, Novedades, Nocturnidades y Comentarios; Más reúne Gráficos, Configuración, Guía y Buscar. Inicio suma anillos de resumen y una tarjeta de Cuenta para entrar a tu cuenta de un toque. Si preferís los colores de antes, cambiá la paleta en Configuración.'],['Nube, eventos y guías','Todos pueden publicar eventos y novedades. Arriba hay una nube ☁ que muestra si tus datos se guardan en la nube, y en Configuración › Cuenta un Diagnóstico y un botón para copiar las reglas de Firebase. El botón ? de cada pantalla abre una guía de todas sus funciones, con el paso a paso para calcular el divisor horario de cada recibo.'],['Más funciones','Ahora todos pueden publicar novedades, con reacciones, confirmación de lectura y encuestas. Los eventos tienen comentarios. En Sueldo hay pestañas: Mes, Deudas (con vencimientos y plan para saldar), Metas (meta de sueldo, aguinaldo y vacaciones) e Historial (evolución de recibos y comparar meses). En Registro podés copiar la semana anterior y usar plantillas de turno. Hay buscador, planilla en PDF, respaldo de datos, recordatorio de horas y bloqueo con PIN o huella.'],['Gráficos radiales','En Sueldo hay un círculo con el desglose de tu sueldo: tocalo y se abre en Gráficos con el detalle completo. Tocá cada parte del círculo o de la lista para resaltarla. En Gráficos también hay un círculo con tus horas del mes.'],['Descuentos y deudas','En Sueldo, activá «Mostrar descuentos» y creá carpetas para tus pagos fijos: luz, agua, deudas… Tocá una carpeta para poner el monto, ordenalas por prioridad con ▲▼ y elegí cuáles descontar. Te mostramos cuánto te queda del sueldo.'],['Deslizá y navegá','Deslizá el dedo hacia los costados para pasar entre Registro, Sueldo, Gráficos, Eventos, Nocturnidades y Configuración. El botón atrás de Android vuelve a la pantalla anterior. En Configuración hay 4 paletas de color nuevas.'],['Cuenta y eventos compartidos','En Perfil > Cuenta entrás con tu correo. Así ves los eventos y novedades que publica el jefe, confirmás tu asistencia y compartís tus nocturnidades con el equipo.'],['Menú principal','Entrás al menú con todas las funciones. La flecha de arriba vuelve a la pantalla anterior; con doble toque volvés al menú.'],['Registro','Tocá un día para cargar horas extra. «Marcar lun–vie» carga los días hábiles. Las nocturnidades y feriados son 10 hs al 100%.'],['Cálculo de sueldo','El valor hora es el básico dividido el divisor. Las horas al 50% se pagan x1,5 y las del 100% x2. Los descuentos se aplican solo sobre el básico. Es una estimación: el recibo real puede traer otros conceptos.'],['Gráficos','Horas por mes, feriados trabajados, reparto 50% y 100% y resumen del año.'],['Configuración','Perfil, tema y paleta, moneda (pesos o dólares con tu cotización) y Escuela 16: los días que marques suman 1 hora al 50%.'],['Tus datos','Se guardan en tu cuenta de Claude, no solo en el teléfono.'],['Recibo desde archivo','En Sueldo, tocá «Cargar recibo desde archivo» y elegí una foto del recibo. Se cargan tu básico, antigüedad, chofer, presentismo, horas extra y líquido, y con eso se calculan tus gráficos. Revisá los datos y guardá.'],['Novedades y comentarios','Publicá texto, fotos o audios cortos para todos, y dejá sugerencias para el desarrollador.'],['Eventos','Cargá un evento con flyer, título y fecha. Al abrirlo podés ver y editar la descripción y marcar quién va.'],['Nocturnidad','Tocá el + para elegir tus días. En viernes, sábado y domingo elegís cuál: noche o tarde. Todos ven quién sale y queda marcado en tu registro.'],['Próximamente','Planilla de fin de mes en imagen o PDF.']];
 function showNv(){$('nvl').innerHTML=NEWS.map(n=>'<p><b>'+n[0]+'</b><br>'+n[1]+'</p>').join('');$('nvd').classList.add('on')}
 const BD={nov:{h:'Novedades',ph:1,au:1,pl:'Escribí una novedad o recordatorio'},eve:{h:'Eventos',ti:1,dt:1,ph:1,go:1,pl:'Descripción del evento'},com:{h:'Comentarios y sugerencias',pl:'Tu comentario o sugerencia para el desarrollador'}};
 const PD={},DT={},OPEN=new Set(),LBL={n:'Nocturnidad',vn:'Viernes nocturnidad',st:'Sábado tarde',sn:'Sábado nocturnidad',dt:'Domingo tarde',dn:'Domingo nocturnidad'};
@@ -602,7 +675,7 @@ function hideComp(){['nov','eve'].forEach(k=>{const c=$('v-'+k).querySelector('.
  h.style.display=!UID?'':'none'})}
 function renderAcc(){const on=!!UID;$('accf').style.display=on?'none':'';$('aout').style.display=on?'':'none';
  as(on?'Sesión iniciada: '+AEM+(IS_ADM?' · Administrador':' · No sos administrador'):'Entrá para ver eventos y novedades, confirmar tu asistencia y compartir tus nocturnidades.');
- const bx=$('accid');if(bx){bx.style.display=(on&&!IS_ADM)?'':'none';if(on){$('uidv').value=UID;$('uidh').textContent=ADMERR==='permission-denied'?'Firestore no deja leer la colección «admins»: publicá las reglas nuevas en la consola de Firebase (Firestore Database, pestaña Rules).':'Opcional (solo sirve para borrar publicaciones de otros): para ser administrador, en la consola de Firebase, Firestore Database, creá la colección «admins» y adentro un documento cuyo ID sea exactamente este UID (con cualquier campo, por ejemplo ok = true). Después tocá «Verificar de nuevo».'}}}
+ const bx=$('accid');if(bx){bx.style.display=(on&&!IS_ADM)?'':'none';if(on){$('uidv').value=UID;$('uidh').textContent=ADMERR==='permission-denied'?'Firestore no deja leer la colección «admins»: publicá las reglas nuevas en la consola de Firebase (Firestore Database, pestaña Rules).':'Opcional (solo sirve para borrar publicaciones de otros): para ser administrador, en la consola de Firebase, Firestore Database, creá la colección «admins» y adentro un documento cuyo ID (el nombre del documento, no un campo de adentro) sea exactamente este UID, o tu correo en minúsculas. Lo que pongas adentro no importa. Después tocá «Verificar de nuevo».'}}}
 async function fbBoot(){
  as('Cargando…');
  try{
@@ -622,7 +695,8 @@ async function fbBoot(){
   Au.onAuthStateChanged(auth,async u=>{
    UNS.forEach(f=>{try{f()}catch(e){}});UNS=[];NC={};Object.keys(DT).forEach(k=>delete DT[k]);
    if(!u){SDB=null;UID=null;doc=null;IS_ADM=false;AEM='';if(PR.nsel)NC.local={name:nm(),sel:PR.nsel}}
-   else{AEM=u.email||'';ADMERR='';try{IS_ADM=(await F.getDoc(F.doc(db,'admins',u.uid))).exists()}catch(e){IS_ADM=false;ADMERR=(e&&e.code)||'error'}UID=u.uid;SDB=mk();
+   else{AEM=u.email||'';ADMERR='';try{IS_ADM=(await F.getDoc(F.doc(db,'admins',u.uid))).exists()}catch(e){IS_ADM=false;ADMERR=(e&&e.code)||'error'}
+   if(!IS_ADM&&u.email){try{IS_ADM=(await F.getDoc(F.doc(db,'admins',u.email.toLowerCase()))).exists()}catch(e){if(!ADMERR)ADMERR=(e&&e.code)||'error'}}UID=u.uid;SDB=mk();
     await cloudInit(u.uid)}
    renderAcc();hideComp();subAll();drawN()});
  }catch(e){as('No se pudo cargar el inicio de sesión: '+String((e&&(e.code||e.message))||'sin conexión').slice(0,120))}
@@ -730,9 +804,9 @@ $('e16').addEventListener('change',()=>{PR.e16=[...document.querySelectorAll('#e
 $('pcu').onchange=()=>{PR.cur=$('pcu').value;render();save()};
 $('pfx').addEventListener('input',()=>{PR.fx=parseFloat($('pfx').value)||0;render();clearTimeout(window._f);window._f=setTimeout(save,700)});
 function fill(){$('cb').value=CFG.base||'';$('cp').value=CFG.pres||'';$('cpl').value=CFG.plus||'';$('cd').value=CFG.div||'';$('cx').value=CFG.desc||''}
-const SW=['reg','sue','gra','eve','noc','per'],RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SW=['home','reg','sue','gra','eq','mas'],RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let CU={},armed=false,armT=0;
-const PALS=[['a','Belgrano','#0B7A9B','#E5533D'],['b','Cibernética','#4F6BED','#0e98ab'],['c','Bosque','#1F7A4D','#B7791F'],['d','Atardecer','#C2410C','#BE185D'],['e','Uva','#7C3AED','#0F9D8A'],['f','Grafito','#2F3A4A','#D97706']];
+const PALS=[['a','Belgrano','#0B7A9B','#E5533D'],['b','Cibernética','#4F6BED','#0e98ab'],['c','Bosque','#1F7A4D','#B7791F'],['d','Atardecer','#C2410C','#BE185D'],['e','Uva','#7C3AED','#0F9D8A'],['f','Grafito','#2F3A4A','#D97706'],['g','Centro de mando','#3DD6F5','#A78BFA']];
 function drawSw(){const b=$('psw');if(!b)return;b.innerHTML=PALS.map(p=>'<button type="button" class="sw'+((PR.pal||'a')===p[0]?' on':'')+'" data-p="'+p[0]+'" aria-label="Paleta '+p[1]+'" title="'+p[1]+'" style="background:linear-gradient(135deg,'+p[2]+' 50%,'+p[3]+' 50%)"></button>').join('')}
 $('psw').addEventListener('click',e=>{const b=e.target.closest('.sw');if(!b)return;PR.pal=b.dataset.p;$('ppl').value=b.dataset.p;applyTheme();save()});
 function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(window._ts);window._ts=setTimeout(()=>e.classList.remove('on'),2000)}
@@ -794,7 +868,7 @@ $('fdel').onclick=()=>{PR.fold=(PR.fold||[]).filter(x=>x.id!==FE);$('fsd').class
 let VTF=false,DNS={},DNI={};
 function go(v,bk,dir){const can=!!document.startViewTransition&&!RM;
  if(can&&dir==='vt'){VTF=true;document.startViewTransition(()=>go2(v,bk,'x'));return}
- if(can&&bk&&VTF&&view==='gra'&&v==='sue'){VTF=false;document.startViewTransition(()=>go2(v,bk,'x'));return}
+ if(can&&bk&&VTF&&view==='gra'&&(v==='sue'||v==='home')){VTF=false;document.startViewTransition(()=>go2(v,bk,'x'));return}
  go2(v,bk,dir==='vt'?undefined:dir)}
 const DC={b:'#6B7A90',pr:'#2E9E63',pl:'#9B7EDE',e50:'var(--ac)',e100:'var(--no)',ds:'var(--rd)',pf:'#E0A030',tq:'#2E9E63',lq:'#2E9E63',h50:'var(--ac)',h100:'var(--no)'};
 const SL={b:'Básico',pr:'Presentismo',pl:'Plus',e50:'Extras 50%',e100:'Extras 100%',ds:'Descuentos',pf:'Pagos fijos',tq:'Te queda',lq:'Líquido',h50:'Al 50%',h100:'Al 100%'};
@@ -1011,7 +1085,10 @@ function newCount(k){const s=PR['s'+k]||0;return(DT[k]||[]).filter(x=>x[1].ts>s&
 function updBadges(){['nov','eve'].forEach(k=>{
  if(DT[k]&&PR['s'+k]===undefined){PR['s'+k]=Math.max(0,...DT[k].map(x=>x[1].ts||0));save()}
  const n=(view===k)?0:newCount(k);
- document.querySelectorAll('[data-go="'+k+'"]').forEach(b=>{let s=b.querySelector('.bdg');if(!n){if(s)s.remove();return}if(!s){s=document.createElement('i');s.className='bdg';b.appendChild(s)}s.textContent=n>9?'9+':String(n)})})}
+ document.querySelectorAll('[data-go="'+k+'"]').forEach(b=>{let s=b.querySelector('.bdg');if(!n){if(s)s.remove();return}if(!s){s=document.createElement('i');s.className='bdg';b.appendChild(s)}s.textContent=n>9?'9+':String(n)})});
+ const tn=newCount('nov')+newCount('eve'),eb=document.querySelector('#bn [data-bn="eq"]');
+ if(eb){let s=eb.querySelector('.bdg');if(!tn){if(s)s.remove()}else{if(!s){s=document.createElement('i');s.className='bdg';eb.appendChild(s)}s.textContent=tn>9?'9+':String(tn)}}
+ if(view==='home')renderHome();else if(view==='eq')renderEq()}
 function markSeen(k){if(!DT[k])return;const m=Math.max(0,...DT[k].map(x=>x[1].ts||0));if((PR['s'+k]||0)<m){PR['s'+k]=m;save()}updBadges()}
 
 /* ---------- 14, 15, 16. Novedades: reacciones, lectura, encuestas, comentarios ---------- */
@@ -1046,15 +1123,6 @@ function pollReset(){PD.nov.poll=false;const p=$('f-nov-po');if(p){p.style.displ
 
 /* ---------- 17 y 12. Inicio con resumen y recordatorio ---------- */
 function nextEvent(){if(!DT.eve)return null;const t=tkey();return DT.eve.map(x=>x[1]).filter(d=>d.dt&&d.dt>=t).sort((a,b)=>a.dt<b.dt?-1:1)[0]||null}
-function renderHome(){const b=$('hm');if(!b)return;const now=new Date(),y=now.getFullYear(),m=now.getMonth(),hs=monthStats(y,m),l=liq(y,m),tk=tkey();let h='';
- if(PR.rm!==false&&now.getHours()>=(PR.rh==null?20:PR.rh)&&!E[tk])h+='<div class="hmb" data-a="today">⏰ Todavía no cargaste las horas de hoy. <b>Cargar ahora ›</b></div>';
- h+='<div class="hmg"><div class="hmt" data-hg="reg"><small>Horas extra de '+MN[m]+'</small><b>'+nf(hs.tot)+' hs</b><small>'+nf(hs.h50)+' al 50% · '+nf(hs.h100)+' al 100%</small></div>'+
- '<div class="hmt" data-hg="sue"><small>'+(l&&l.real?'Líquido de '+MN[m]:'Sueldo estimado')+'</small><b>'+(l?ars(l.v):'Sin datos')+'</b><small>'+(l?'Tocá para ver el desglose':'Cargá tu recibo u horas')+'</small></div>';
- const g=+PR.goal||0;if(g>0&&l){const p=Math.min(100,l.v/g*100);h+='<div class="hmt w" data-hg="sue" data-tab="met"><small>Meta de sueldo · '+Math.round(p)+'%</small><div class="bar"><i style="background:var(--ac);width:'+p.toFixed(1)+'%"></i></div><small>'+(l.v>=g?'¡Meta alcanzada!':'Te faltan '+ars(g-l.v))+'</small></div>'}
- let nx=null;(PR.fold||[]).forEach(f=>{if(f.on===false||!f.d)return;const d=dueDays(f);if(d!=null&&(nx==null||d<nx.d))nx={d:d,f:f}});
- if(nx)h+='<div class="hmt w" data-hg="sue" data-tab="deu"><small>Próximo vencimiento</small><b>'+esc(nx.f.n)+' · '+ars(+nx.f.m||0)+'</b><small>'+(nx.d===0?'Vence hoy':nx.d===1?'Vence mañana':'Vence en '+nx.d+' días (día '+nx.f.d+')')+'</small></div>';
- const ev=nextEvent();if(ev)h+='<div class="hmt w" data-hg="eve"><small>Próximo evento</small><b>'+esc(ev.ti||'Evento')+'</b><small>'+esc(ev.dt.split('-').reverse().join('/'))+'</small></div>';
- b.innerHTML=h+'</div>'}
 function icsAlarm(){const hh=PR.rh==null?20:PR.rh,t=new Date(),p=n=>String(n).padStart(2,'0'),st=t.getFullYear()+p(t.getMonth()+1)+p(t.getDate())+'T'+p(hh)+'0000',en=t.getFullYear()+p(t.getMonth()+1)+p(t.getDate())+'T'+p(hh)+'1500',now=t.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
  dlFile('recordatorio-horas.ics',['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Horas//ES','BEGIN:VEVENT','UID:horas-'+Date.now()+'@app','DTSTAMP:'+now,'DTSTART:'+st,'DTEND:'+en,'RRULE:FREQ=DAILY','SUMMARY:Cargar mis horas extra','DESCRIPTION:Abrí la app y cargá las horas de hoy.','BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:Cargar mis horas extra','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n'),'text/calendar')}
 
@@ -1124,9 +1192,6 @@ document.addEventListener('click',e=>{const t=e.target;
  if(t.closest('#rmIcs')){icsAlarm();return}
  if(t.closest('#cpw')){copyWeek();return}
  if(t.closest('#pdf')||t.closest('#pdf2')){printPlan();return}
- const hm=t.closest('#hm');
- if(hm){if(t.closest('[data-a=today]')){const n=new Date();Y=n.getFullYear();M=n.getMonth();render();go('reg');setTimeout(()=>open(n.getDate()),120);return}
-  const g=t.closest('[data-hg]');if(g){go(g.dataset.hg);if(g.dataset.tab)setST(g.dataset.tab)}return}
  const tp=t.closest('#tpc');
  if(tp){const x=t.closest('[data-tx]');
   if(x){PR.tpl=(PR.tpl||[]).filter(q=>q.id!==x.dataset.tx);renderTpl();save();return}
@@ -1161,7 +1226,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){LKS.hid=Da
 var SYNC={s:'off',code:'',t:0,toastT:0};
 const RULES=["rules_version = '2';","service cloud.firestore {","  match /databases/{database}/documents {",
 "    function logueado() { return request.auth != null; }",
-"    function esAdmin() { return logueado() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }",
+"    function esAdmin() { return logueado() && (exists(/databases/$(database)/documents/admins/$(request.auth.uid)) || (request.auth.token.email != null && exists(/databases/$(database)/documents/admins/$(request.auth.token.email)))); }",
 "    function esDueno() { return logueado() && resource.data.uid == request.auth.uid; }",
 "    function soloMio(c) { return request.resource.data.get(c, {}).diff(resource.data.get(c, {})).affectedKeys().hasOnly([request.auth.uid]); }",
 "    match /registros/{uid} { allow read, write: if logueado() && request.auth.uid == uid; }",
@@ -1174,26 +1239,32 @@ const RULES=["rules_version = '2';","service cloud.firestore {","  match /databa
 "    match /com/{id} {","      allow read: if logueado();","      allow create: if logueado() && request.resource.data.uid == request.auth.uid;","      allow delete: if esAdmin() || esDueno();","    }",
 "    match /ecom/{id} {","      allow read: if logueado();","      allow create: if logueado() && request.resource.data.uid == request.auth.uid;","      allow delete: if esAdmin() || esDueno();","    }",
 "    match /noct/{uid} { allow read: if logueado(); allow write: if logueado() && request.auth.uid == uid; }",
-"    match /admins/{uid} { allow read: if logueado() && request.auth.uid == uid; }","  }","}"].join('\n');
+"    match /admins/{id} { allow read: if logueado() && (request.auth.uid == id || request.auth.token.email == id); }","  }","}"].join('\n');
 function syncUI(){const c=$('cld'),t=$('syncT'),b=$('syncBox');if(!c)return;const st=!UID?'off':SYNC.s;c.className='ib cld '+st;
  const lab={off:'Sin sesión: tus datos se guardan solo en este teléfono',pending:'Sincronizando con la nube…',ok:'Datos guardados en la nube',err:'No se pudo guardar en la nube'}[st]||'';c.title=lab;c.setAttribute('aria-label',lab);
  if(b)b.style.display=UID?'':'none';
  if(t&&UID){const hh=SYNC.t?new Date(SYNC.t).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'}):'';
   t.textContent=SYNC.s==='ok'?'☁ Tus datos están guardados en la nube (último guardado: '+hh+').':SYNC.s==='pending'?'☁ Sincronizando…':SYNC.s==='err'?(SYNC.code==='permission-denied'?'☁ Firebase rechazó el permiso para guardar en tu cuenta. Falta publicar las reglas nuevas: tocá «Copiar reglas», pegalas en Firebase (Firestore Database, pestaña Rules), tocá Publish y después «Sincronizar ahora».':'☁ No se pudo guardar en la nube ('+SYNC.code+'). Revisá tu conexión y tocá «Sincronizar ahora».'):'☁ Todavía no se sincronizó.'}}
 function syncSet(ok,e){if(ok){SYNC.s='ok';SYNC.t=Date.now();SYNC.code=''}else{SYNC.s='err';SYNC.code=(e&&e.code)||'error';if(Date.now()-SYNC.toastT>60000){SYNC.toastT=Date.now();toast('No se pudo guardar en la nube ('+SYNC.code+'). Tocá la nube de arriba para ver cómo arreglarlo.')}}syncUI()}
+var ui2ch=false;
 async function cloudInit(uid){if(!window.FB||!uid)return;const F=FB.F,db=FB.db,R=F.doc(db,'registros',uid);
  doc={get:async()=>{const x=await F.getDoc(R);return{exists:x.exists(),data:()=>x.data()}},set:d=>F.setDoc(R,JSON.parse(JSON.stringify(d)))};
  SYNC.s='pending';syncUI();
  try{const sn=await doc.get();
-  if(sn.exists){const x=sn.data();E=Object.assign({},x.entries||{});CFG=Object.assign({},x.cfg||{});PAY=Object.assign({},x.pay||{});PR=Object.assign({},x.prefs||{});try{localStorage.setItem('hx',JSON.stringify({E:E,C:CFG,P:PAY,R:PR}))}catch(e){}}
+  if(sn.exists){const x=sn.data();E=Object.assign({},x.entries||{});CFG=Object.assign({},x.cfg||{});PAY=Object.assign({},x.pay||{});PR=Object.assign({},x.prefs||{});ui2ch=ui2init();try{localStorage.setItem('hx',JSON.stringify({E:E,C:CFG,P:PAY,R:PR}))}catch(e){}}
   else await doc.set({entries:E,cfg:CFG,pay:PAY,prefs:PR});
-  syncSet(true);fill();applyTheme();fillPer();render()
+  syncSet(true);fill();applyTheme();fillPer();render();if(ui2ch)save()
  }catch(e){doc=null;syncSet(false,e)}}
 async function diagRun(){const o=$('diagO');o.style.display='';o.textContent='Probando…';const L=[];let perm=false;
  const add=(ok,t)=>{L.push((ok?'✓ ':'✗ ')+t);o.textContent=L.join('\n')};
  if(!window.FB||!UID){add(false,'No hay sesión iniciada o Firebase no cargó todavía.');return}
  const F=FB.F,db=FB.db,T=async(n,fn)=>{try{await fn();add(true,n)}catch(e){const c=(e&&e.code)||'error';if(c==='permission-denied')perm=true;add(false,n+' → '+c)}};
  add(true,'Sesión: '+AEM+' (UID '+UID.slice(0,6)+'…)');
+ let byU=false,byE=false;
+ await T('Leer el documento admins/'+UID.slice(0,6)+'…',async()=>{byU=(await F.getDoc(F.doc(db,'admins',UID))).exists()});
+ if(AEM)await T('Leer el documento admins/'+AEM.toLowerCase(),async()=>{byE=(await F.getDoc(F.doc(db,'admins',AEM.toLowerCase()))).exists()});
+ add(byU||byE,'Administrador: '+(byU?'sí (documento con tu UID)':byE?'sí (documento con tu correo)':'no. Falta un documento en «admins» cuyo ID sea tu UID o tu correo en minúsculas'));
+ if((byU||byE)&&!IS_ADM){IS_ADM=true;renderAcc();hideComp()}
  await T('Leer tu registro en la nube',()=>F.getDoc(F.doc(db,'registros',UID)));
  await T('Guardar tu registro en la nube',()=>F.setDoc(F.doc(db,'registros',UID),JSON.parse(JSON.stringify({entries:E,cfg:CFG,pay:PAY,prefs:PR}))));
  for(const k of ['nov','eve']){const nm2=k==='nov'?'novedades':'eventos';
@@ -1238,7 +1309,7 @@ document.addEventListener('click',e=>{const t=e.target;
  const tv=t.closest('#tuC [data-tv]');if(tv){tuShow(tv.dataset.tv);return}
  if(t.closest('[data-tuact="dv"]')){$('tu').classList.remove('on');go('sue');setST('mes');setTimeout(()=>$('dvC').scrollIntoView({behavior:'smooth',block:'start'}),200);return}
  if(t.closest('#dvh')){tuShow('sue');return}
- if(t.closest('#cld')){go('per');setTimeout(()=>{const a=$('acc');if(a)a.scrollIntoView({behavior:'smooth',block:'start'})},250);return}
+ if(t.closest('#cld')){goTo('acc');return}
  if(t.closest('#dvU')){const v=+$('dvU').dataset.v;if(v>0){CFG.div=v;save();fill();render();toast('Divisor cargado: '+nf(v))}return}
  if(t.closest('#syncNow')){if(UID){cloudInit(UID)}return}
  if(t.closest('#diagBtn')){diagRun();return}
@@ -1248,14 +1319,103 @@ document.addEventListener('click',e=>{const t=e.target;
  const d=$('dvC');if(d){d.addEventListener('input',e=>{if(e.target.id==='dvB')e.target.dataset.t=1;dvCalc()});d.addEventListener('change',dvCalc)}
  const rt=$('rulesTx');if(rt)rt.value=RULES;syncUI()})();
 
+
+/* ---------- UI 2: inicio bento, barra inferior, Equipo y Más ---------- */
+const IC={
+ home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+ reg:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+ sue:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.9-1.4-1.4-2.5-1.4-1.4 0-2.5.8-2.5 1.9s1 1.6 2.5 2 2.5.9 2.5 2-1.1 1.9-2.5 1.9c-1.2 0-2.2-.5-2.6-1.5M12 6.5v1.3M12 16.2v1.3"/>',
+ eq:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3 3 0 010 5.6M21 20c0-2.6-1.6-4.7-4-5.6"/>',
+ mas:'<circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/>',
+ gra:'<path d="M4 4v16h16M8 16v-4M12 16V8M16 16v-6"/>',
+ eve:'<path d="M6 21V4M6 4h11l-2 4 2 4H6"/>',
+ noc:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',
+ nov:'<path d="M3 10v4h3l8 4V6L6 10H3zM18 9.5a4 4 0 010 5"/>',
+ com:'<path d="M4 5h16v11H9l-5 4V5z"/>',
+ per:'<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/>',
+ cloud:'<path d="M7 18a4 4 0 010-8 5.5 5.5 0 0110.6-1A4.5 4.5 0 0117 18H7z"/>',
+ lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>',
+ help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.6 2.6 0 015 .8c0 1.7-2.5 2.2-2.5 3.7M12 17.2v.1"/>',
+ search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>'};
+const ico=(k,s)=>'<svg width="'+(s||24)+'" height="'+(s||24)+'" viewBox="0 0 24 24" fill="'+(k==='mas'?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[k]+'</svg>';
+const BNMAP={home:'home',reg:'reg',sue:'sue',gra:'sue',eq:'eq',eve:'eq',nov:'eq',noc:'eq',com:'eq',mas:'mas',per:'mas'};
+function bnSet(v){const t=BNMAP[v]||'home';document.querySelectorAll('#bn [data-bn]').forEach(b=>b.classList.toggle('on',b.dataset.bn===t));const f=$('qfab');if(f)f.style.display=(v==='home'||v==='reg')?'':'none'}
+function bnInit(){$('bn').querySelector('.in').innerHTML=[['home','Inicio'],['reg','Registro'],['sue','Sueldo'],['eq','Equipo'],['mas','Más']].map(t=>'<button data-bn="'+t[0]+'" aria-label="'+t[1]+'">'+ico(t[0],23)+'<span>'+t[1]+'</span></button>').join('');$('qfab').innerHTML=ico('plus',26);bnSet(view)}
+
+var HMEDIT=false,HMK='';
+const HMD=['hero','rings','today','hs','goal','acct','due','ev','nov'];
+const HMN={hero:'Resumen del mes',rings:'Anillos del mes',acct:'Cuenta',today:'Hoy',hs:'Horas extra',goal:'Meta de sueldo',due:'Próximo vencimiento',ev:'Próximo evento',nov:'Novedades'};
+const DIAS=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+function hmOrder(){const o=(PR.hmo||[]).filter(k=>HMD.indexOf(k)>=0);HMD.forEach(k=>{if(o.indexOf(k)<0)o.push(k)});return o}
+function ringData(sd){const tot=(PR.fshow&&PR.fold)?PR.fold.filter(f=>f.on!==false).reduce((a,f)=>a+(+f.m||0),0):0;
+ const hab=[['b',sd.b],['pr',sd.pr],['pl',sd.pl],['e50',sd.e50],['e100',sd.e100]].filter(x=>x[1]>0);
+ let dest=tot>0?[['ds',sd.ds],['pf',Math.min(tot,Math.max(0,sd.lq))],['tq',Math.max(0,sd.lq-tot)]]:[['ds',sd.ds],['lq',sd.lq]];dest=dest.filter(x=>x[1]>0);
+ return[{r:84,w:15,items:hab.map(x=>({k:x[0],v:x[1]}))},{r:62,w:13,items:dest.map(x=>({k:x[0],v:x[1]}))}]}
+function renderHome(force){const b=$('hm');if(!b)return;
+ const now=new Date(),y=now.getFullYear(),m=now.getMonth(),hs=monthStats(y,m),l=liq(y,m),sd=sdesg(y,m),tk=tkey(),e=E[tk],hid=PR.hmx||[],rh=PR.rh==null?20:PR.rh,late=PR.rm!==false&&now.getHours()>=rh&&!e;
+ const key=y+'-'+m+'-'+(sd?Math.round(sd.lq):0),an=(view==='home')&&!HMEDIT&&(force||HMK!==key);HMK=key;const T={};
+ if(sd)T.hero='<div class="bt w bhero" data-hg="gra" data-vt="1"><div class="dnsvg">'+dsvg(ringData(sd),{n:sd.lq,t:sd.real?'Líquido':'Estimado'},an)+'</div><div class="bh-r"><small>'+MN[m]+' '+y+'</small><b class="big" data-n="'+sd.lq+'">'+ars(an?0:sd.lq)+'</b><small>'+(sd.real?'Líquido a cobrar':'Líquido estimado')+'</small><div class="bh-kv"><span>Bruto</span><b data-n="'+sd.br+'">'+ars(an?0:sd.br)+'</b></div><div class="bh-kv"><span>Descuentos</span><b data-n="'+sd.ds+'">'+ars(an?0:sd.ds)+'</b></div><div class="bh-kv"><span>Horas extra</span><b>'+nf(hs.tot)+' hs</b></div><span class="bhm">Tocá para ver el desglose ›</span></div></div>';
+ else T.hero='<div class="bt w bhero" data-hg="sue"><div class="bh-r"><small>'+MN[m]+' '+y+'</small><b class="big">Sin datos todavía</b><small>Cargá tu recibo o tus horas para ver el sueldo y su desglose.</small><span class="bhm">Ir a Sueldo ›</span></div></div>';
+ T.today='<div class="bt w'+(late?' alert late':'')+'" data-hqa="today"><small>Hoy · '+DIAS[now.getDay()]+' '+now.getDate()+'</small>'+(e?'<b>'+nf(e.h)+' hs al '+rate(e)+'%</b><small>'+esc(e.n||TL[e.t])+'</small>':'<b>'+(late?'⏰ Todavía no cargaste hoy':'Sin horas cargadas hoy')+'</b><small>Tocá para cargar tus horas</small>')+'</div>';
+ const h2=hs.h50+hs.h100,Cm=113.1,f50=h2>0?hs.h50/h2:0,a1=(f50*Cm).toFixed(1),a2=((1-f50)*Cm).toFixed(1);
+ T.hs='<div class="bt" data-hg="reg"><div class="gl-row"><svg class="gr" viewBox="0 0 44 44" aria-hidden="true"><circle class="gr-t" cx="22" cy="22" r="18"/>'+(h2>0?'<circle class="gr-p" cx="22" cy="22" r="18" transform="rotate(-90 22 22)" style="stroke:var(--ac);stroke-dasharray:'+(an?'0':a1)+' '+Cm+'" data-d="'+a1+' '+Cm+'"/><circle class="gr-p" cx="22" cy="22" r="18" transform="rotate(-90 22 22)" style="stroke:var(--no);stroke-dashoffset:-'+a1+';stroke-dasharray:'+(an?'0':a2)+' '+Cm+'" data-d="'+a2+' '+Cm+'"/>':'')+'<text class="gr-x" x="22" y="26">'+nf(hs.tot)+'</text></svg><div><small>Horas extra</small><b style="font-size:15px">'+nf(hs.tot)+' hs</b><small>'+nf(hs.h50)+' al 50% · '+nf(hs.h100)+' al 100%</small></div></div></div>';
+ const g=+PR.goal||0;
+ if(g>0&&l){const p=Math.min(100,l.v/g*100),d=(p*1.131).toFixed(1);T.goal='<div class="bt" data-hg="sue" data-tab="met"><div class="gl-row"><svg class="gr" viewBox="0 0 44 44"><circle class="gr-t" cx="22" cy="22" r="18"/><circle class="gr-p" cx="22" cy="22" r="18" transform="rotate(-90 22 22)" style="stroke-dasharray:'+(an?'0':d)+' 113.1" data-d="'+d+' 113.1"/><text class="gr-x" x="22" y="26">'+Math.round(p)+'%</text></svg><div><small>Meta de sueldo</small><b style="font-size:15px">'+(l.v>=g?'¡Lograda!':ars(g-l.v))+'</b><small>'+(l.v>=g?'Superaste la meta':'te faltan')+'</small></div></div></div>'}
+ else T.goal='<div class="bt" data-hg="sue" data-tab="met"><small>Meta de sueldo</small><b>Poné una meta</b><small>Y mirá cuánto te falta</small></div>';
+ const mono=new Date(y,m+1,0).getDate(),mesP=Math.min(100,now.getDate()/mono*100),totP=(PR.fshow&&PR.fold)?PR.fold.filter(f=>f.on!==false).reduce((a,f)=>a+(+f.m||0),0):0,metaP=(g>0&&l)?Math.min(100,l.v/g*100):null,pagoP=(totP>0&&l&&l.v>0)?Math.min(100,totP/l.v*100):null;
+ const RG=[[50,metaP,'var(--ac)','Meta de sueldo',metaP==null?'sin meta':Math.round(metaP)+'%'],[38,pagoP,'#E0A030','Pagos fijos',pagoP==null?'sin datos':Math.round(pagoP)+'% del líquido'],[26,mesP,'#2E9E63','Mes transcurrido',Math.round(mesP)+'%']];
+ T.rings='<div class="bt w" data-hg="sue" data-tab="met"><div class="gl-row" style="gap:14px"><svg viewBox="0 0 120 120" class="rg" aria-hidden="true">'+RG.map(r=>{const C=2*Math.PI*r[0],d=((r[1]==null?0:r[1])/100*C).toFixed(1);return '<circle class="gr-t" cx="60" cy="60" r="'+r[0]+'" style="stroke-width:9"/><circle class="gr-p" cx="60" cy="60" r="'+r[0]+'" transform="rotate(-90 60 60)" style="stroke:'+r[2]+';stroke-width:9;stroke-dasharray:'+(an?'0':d)+' '+C.toFixed(1)+'" data-d="'+d+' '+C.toFixed(1)+'"/>'}).join('')+'<text class="gr-x" x="60" y="60" style="font-size:16px">'+now.getDate()+'</text><text class="dc-l" x="60" y="73" style="font-size:8px">'+MN[m].slice(0,3)+'</text></svg><div class="rg-l"><small>Resumen en anillos</small>'+RG.map(r=>'<div><i style="background:'+r[2]+'"></i><span>'+r[3]+'</span><b>'+r[4]+'</b></div>').join('')+'</div></div></div>';
+ T.acct='<div class="bt" data-hg="per" data-scroll="acc"><small>Cuenta</small><b style="font-size:15px;word-break:break-all">'+(UID?esc(AEM):'Entrar o crear cuenta')+'</b><small>'+(UID?(IS_ADM?'Administrador · ':'')+({ok:'☁ guardado en la nube',pending:'☁ sincronizando…',err:'☁ problema al guardar'}[SYNC.s]||'☁ sin sincronizar'):'Tocá para iniciar sesión')+'</small></div>';
+ let nx=null;(PR.fold||[]).forEach(f=>{if(f.on===false||!f.d)return;const d=dueDays(f);if(d!=null&&(nx==null||d<nx.d))nx={d:d,f:f}});
+ T.due=nx?'<div class="bt" data-hg="sue" data-tab="deu"><small>Próximo vencimiento</small><b>'+esc(nx.f.n)+'</b><small'+(nx.d<=3?' style="color:var(--rd)"':'')+'>'+ars(+nx.f.m||0)+' · '+(nx.d===0?'vence hoy':nx.d===1?'vence mañana':'en '+nx.d+' días')+'</small></div>':'<div class="bt" data-hg="sue" data-tab="deu"><small>Próximo vencimiento</small><b>Sin fechas</b><small>Cargalas en Deudas</small></div>';
+ const ev=nextEvent();T.ev=ev?'<div class="bt" data-hg="eve"><small>Próximo evento</small><b>'+esc(ev.ti||'Evento')+'</b><small>'+esc(ev.dt.split('-').reverse().slice(0,2).join('/'))+' · van '+Object.keys(ev.go||{}).length+'</small></div>':'<div class="bt" data-hg="eve"><small>Próximo evento</small><b>Sin eventos</b><small>Mirá o publicá uno</small></div>';
+ const nn=newCount('nov'),ln=(DT.nov||[])[0];T.nov='<div class="bt" data-hg="nov"><small>Novedades</small><b>'+(nn?nn+' nueva'+(nn===1?'':'s'):'Al día')+'</b><small>'+(ln?esc((ln[1].tx||ln[1].name||'').slice(0,34)):'Ver y publicar')+'</small></div>';
+ const vis=hmOrder().filter(k=>hid.indexOf(k)<0);
+ let h='<div class="bento'+(an?' ani':'')+'">'+vis.map((k,i)=>{let t=T[k];
+  if(HMEDIT){t=t.replace('class="bt','class="bt edit');const i0=t.indexOf('>')+1;t=t.slice(0,i0)+'<div class="bt-ed"><button data-hme="up" data-id="'+k+'" aria-label="Subir"'+(i===0?' disabled':'')+'>▲</button><button data-hme="dn" data-id="'+k+'" aria-label="Bajar"'+(i===vis.length-1?' disabled':'')+'>▼</button>'+(k!=='hero'?'<button data-hme="x" data-id="'+k+'" aria-label="Ocultar">✕</button>':'')+'</div>'+t.slice(i0)}
+  return t}).join('')+'</div>';
+ if(HMEDIT&&hid.length)h+='<p class="hint">Tarjetas ocultas (tocá para mostrar):</p><div class="chips" style="margin:0 0 12px">'+hid.map(k=>'<button data-hme="add" data-id="'+k+'">＋ '+HMN[k]+'</button>').join('')+'</div>';
+ h+='<button class="hmedit'+(HMEDIT?' p':'')+'" data-hme="toggle">'+(HMEDIT?'✓ Listo':'✎ Personalizar inicio')+'</button>';
+ b.innerHTML=h;
+ if(an){playDonut(b);requestAnimationFrame(()=>requestAnimationFrame(()=>b.querySelectorAll('.gr-p').forEach(c=>{c.style.strokeDasharray=c.dataset.d})))}}
+function hmMove(id,dir){const hid=PR.hmx||[],o=hmOrder(),vis=o.filter(k=>hid.indexOf(k)<0),i=vis.indexOf(id),j=i+dir;if(i<0||j<0||j>=vis.length)return;const a=o.indexOf(vis[i]),c=o.indexOf(vis[j]);const t=o[a];o[a]=o[c];o[c]=t;PR.hmo=o;save()}
+function renderEq(){const b=$('v-eq');if(!b)return;const nn=newCount('nov'),ne=newCount('eve'),ev=nextEvent(),ln=(DT.nov||[])[0];
+ const T=(g,ic,t,sub,bd)=>'<div class="bt" data-eqgo="'+g+'"><i class="bti">'+ico(ic,26)+'</i><b>'+t+'</b><small>'+sub+'</small>'+(bd?'<span class="bdg">'+(bd>9?'9+':bd)+'</span>':'')+'</div>';
+ b.innerHTML='<div class="bento">'+T('eve','eve','Eventos',ev?esc(ev.ti||'Evento')+' · '+esc(ev.dt.split('-').reverse().slice(0,2).join('/')):'Ver y publicar',ne)+T('nov','nov','Novedades',ln?esc((ln[1].tx||ln[1].name||'').slice(0,32)):'Ver y publicar',nn)+T('noc','noc','Nocturnidades','Turnos de la semana',0)+T('com','com','Comentarios','Sugerencias y ayuda',0)+'</div><p class="hint">Todo lo que compartís con tus compañeros está acá.</p>'}
+function renderMas(){const b=$('v-mas');if(!b)return;
+ const T=(g,ic,t,sub)=>'<div class="bt" data-masgo="'+g+'"><i class="bti">'+ico(ic,26)+'</i><b>'+t+'</b><small>'+sub+'</small></div>';
+ const cl={off:'Sin sesión',pending:'Sincronizando…',ok:'Guardado en la nube',err:'Hay un problema'}[UID?SYNC.s:'off']||'';
+ b.innerHTML='<div class="bento">'+T('per:acc','cloud','Cuenta y nube',cl)+T('per','per','Configuración','Perfil, colores, moneda')+T('gra','gra','Gráficos','Círculo del sueldo y barras')+T('per:secC','lock','Seguridad y respaldo',hasPin()?'PIN activado':'PIN y respaldo')+T('guia','help','Guía','Cómo usar cada pantalla')+T('buscar','search','Buscar','Jornadas, recibos, deudas…')+'</div>'}
+function goTo(id){go('per');setTimeout(()=>{const el=$(id);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600)}},340)}
+function ui2init(){if(PR.ui!==2){PR.ui=2;PR.pal='g';PR.theme='dark';return true}return false}
+
+document.addEventListener('click',e=>{const t=e.target;
+ const bn=t.closest('#bn [data-bn]');
+ if(bn){const g=bn.dataset.bn;if(view===g){window.scrollTo({top:0,behavior:'smooth'});return}HS=(g==='home')?[]:['home'];go(g,true);return}
+ if(t.closest('#qfab')){const n=new Date();if(Y!==n.getFullYear()||M!==n.getMonth()){Y=n.getFullYear();M=n.getMonth();render()}open(n.getDate());return}
+ const eq=t.closest('[data-eqgo]');if(eq){go(eq.dataset.eqgo);return}
+ const ms=t.closest('[data-masgo]');
+ if(ms){const g=ms.dataset.masgo;if(g==='guia')tuShow('home');else if(g==='buscar')sqOpen();else if(g.indexOf('per')===0){const id=g.split(':')[1];if(id)goTo(id);else go('per')}else go(g);return}
+ const hm=t.closest('#hm');
+ if(hm){const he=t.closest('[data-hme]');
+  if(he){const a=he.dataset.hme,id=he.dataset.id;if(a==='toggle')HMEDIT=!HMEDIT;else if(a==='up')hmMove(id,-1);else if(a==='dn')hmMove(id,1);else if(a==='x'){PR.hmx=(PR.hmx||[]).concat(id);save()}else if(a==='add'){PR.hmx=(PR.hmx||[]).filter(k=>k!==id);save()}renderHome();return}
+  if(HMEDIT)return;
+  if(t.closest('[data-hqa="today"]')){const n=new Date();if(Y!==n.getFullYear()||M!==n.getMonth()){Y=n.getFullYear();M=n.getMonth();render()}open(n.getDate());return}
+  const g=t.closest('[data-hg]');
+  if(g){if(g.dataset.vt){const n=new Date();Y=n.getFullYear();M=n.getMonth();render();go('gra',false,'vt')}else if(g.dataset.scroll){goTo(g.dataset.scroll)}else{go(g.dataset.hg);if(g.dataset.tab)setST(g.dataset.tab)}}}
+});
+bnInit();
+
 /* ---------- Enganches con la app ---------- */
-x2.onRender=function(){renderDivCalc();syncUI();renderCmp();renderGoal();renderAg();renderPlan();renderTpl();renderHome();if(view==='sue'&&STAB==='his')renderHist();updBadges();renderSec()};
+x2.onRender=function(){if(view==='eq')renderEq();if(view==='mas')renderMas();renderDivCalc();syncUI();renderCmp();renderGoal();renderAg();renderPlan();renderTpl();renderHome();if(view==='sue'&&STAB==='his')renderHist();updBadges();renderSec()};
 x2.onGo=function(v){['nov','eve'].forEach(k=>{SEENPREV[k]=(v===k)?(PR['s'+k]||0):null});
  if(v==='nov'||v==='eve'){markSeen(v);if(DT[v])draw(v)}
- if(v==='home')renderHome();
+ bnSet(v);if(v==='home')renderHome(true);if(v==='eq')renderEq();if(v==='mas')renderMas();
  if(v==='sue'&&STAB==='his')renderHist();
  if(v==='per')renderSec();tuPulse(v)};
-x2.onRender();
+if(ui2init()){applyTheme();fillPer();save()}
+x2.onRender();renderHome(true);
 if(hasPin())lkShow('unlock','Ingresá tu PIN');
 
 </script>
