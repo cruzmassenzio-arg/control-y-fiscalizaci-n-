@@ -1,4 +1,6 @@
 # Registro de horas extra (versión instalable)
+
+toca el link de abajo para ingresar 
 ## https://cruzmassenzio-arg.github.io/horas-extra ##
 
 ​¡La aplicación ya está disponible!
