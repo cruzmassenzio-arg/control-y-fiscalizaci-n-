@@ -1,16 +1,40 @@
-const C='horas-extra-v7';
-const A=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{
- if(e.request.method!=='GET')return;
- const u=new URL(e.request.url);
- const ext=u.origin==='https://www.gstatic.com'&&u.pathname.indexOf('/firebasejs/')===0;
- if(u.origin!==location.origin&&!ext)return;
- e.respondWith(caches.open(C).then(async c=>{
-  const hit=await c.match(e.request,{ignoreSearch:!ext});
-  if(ext&&hit)return hit;
-  const net=fetch(e.request).then(r=>{if(r&&r.ok)c.put(e.request,r.clone());return r}).catch(()=>hit||(ext?Response.error():c.match('./index.html')));
-  return hit||net;
- }));
+// Service worker de la app de horas.
+// Estrategia: primero la red (así siempre ves la última versión) y, si no hay internet, la copia guardada.
+const V = 'horas-v12';
+
+self.addEventListener('install', () => { self.skipWaiting(); });
+
+self.addEventListener('activate', e => {
+  e.waitUntil((async () => {
+    const ks = await caches.keys();
+    await Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('message', e => { if (e.data === 'SKIP_WAITING') self.skipWaiting(); });
+
+self.addEventListener('fetch', e => {
+  const r = e.request;
+  if (r.method !== 'GET') return;
+  const u = new URL(r.url);
+  if (u.origin !== self.location.origin) return;   // Firebase, Google y el Worker pasan directo
+  e.respondWith((async () => {
+    try {
+      const res = await fetch(r.url, { cache: 'no-store', credentials: 'same-origin' });
+      if (res && res.status === 200) {
+        const c = await caches.open(V);
+        c.put(r, res.clone());
+      }
+      return res;
+    } catch (err) {
+      const m = await caches.match(r, { ignoreSearch: true });
+      if (m) return m;
+      if (r.mode === 'navigate') {
+        const i = (await caches.match('./index.html')) || (await caches.match('./'));
+        if (i) return i;
+      }
+      throw err;
+    }
+  })());
 });
